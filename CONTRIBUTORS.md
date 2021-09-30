@@ -9,5 +9,6 @@ Add yourself as a contributor to this project as a Markdown link that links your
 ## Mentors
 
 - [Alejandro Coca](https://github.com/alxmcr) 😄
+- [Juan Andrade](https://github.com/jandrade) 👋
 
 ## Code of Conduct Contacts
