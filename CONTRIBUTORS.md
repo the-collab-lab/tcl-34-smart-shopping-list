@@ -7,6 +7,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 ## Cohort Participants
 
 - [Mailliw Mogollon](https://github.com/mailliwmogollon) 😄
+- [Yancarlo Urdaneta](https://github.com/yanurd) 🤟
 
 ## Mentors
 
