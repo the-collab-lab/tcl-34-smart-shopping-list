@@ -9,6 +9,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Mailliw Mogollon](https://github.com/mailliwmogollon) 😄
 - [Yancarlo Urdaneta](https://github.com/yanurd) 🤟
 - [Susana Ruiz](https://github.com/susird) 🧛‍♀️
+- [Isabella Soares](https://github.com/IsabellaSoares) ☕
 
 ## Mentors
 
