@@ -16,5 +16,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Alejandro Coca](https://github.com/alxmcr) 😄
 - [Juan Andrade](https://github.com/jandrade) 👋
 - [Daniel Jaramillo G](https://github.com/Danieljara23) 👻
+- [Daniel Jaramillo G](https://github.com/Danieljara23) 👻
+- [Daniel Jaramillo G](https://github.com/Danieljara23) 👻
 
 ## Code of Conduct Contacts
