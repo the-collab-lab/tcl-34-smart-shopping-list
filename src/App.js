@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+
+import { BrowserRouter, Link, Route, Switch} from 'react-router-dom';
+
+const Listar = () => <h1>Listar</h1>
+const Adicionar = () => <h1>Adicionar</h1>
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+    <Switch>
+    <Route path='/listar'>
+        <Listar />
+      </Route>
+      <Route path='/adicionar'>
+        <Adicionar />
+      </Route>
+    </Switch>
+    <div className="div-button">
+    <button className="button">
+      <Link to='/listar'>
+      Listar
+    </Link>
+    </button>
+    <button className="button">
+    <Link to='/adicionar'>
+      Adicionar
+    </Link>
+    </button>
     </div>
-  );
+    </BrowserRouter>
+  )
 }
 
 export default App;
