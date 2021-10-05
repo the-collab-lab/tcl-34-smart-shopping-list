@@ -8,8 +8,8 @@ const ListItem = () => {
       {loading && 'Loading'}
       {error && 'Error'}
       {products &&
-        products.map(({ name, date }) => (
-          <li>{`Product: ${name} => Created at: ${date}`}</li>
+        products.map(({ id, name, date }) => (
+          <li key={id}>{`Product: ${name} => Created at: ${date}`}</li>
         ))}
     </div>
   );

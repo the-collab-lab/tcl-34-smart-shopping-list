@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const addProduct = async () => {
     try {
@@ -18,6 +18,7 @@ export const useProducts = () => {
 
       setLoading(false);
     } catch (error) {
+      setError(true);
       console.error('Error adding document: ', error);
     }
   };
@@ -26,6 +27,7 @@ export const useProducts = () => {
     let unsubscribe;
     setLoading(true);
 
+    // Retrieves information from Firestore
     const getProducts = async () => {
       try {
         const productsCollection = await collection(db, 'products');
@@ -43,12 +45,14 @@ export const useProducts = () => {
         });
       } catch (error) {
         setError(error);
+        console.log('Something happened: ', error);
       }
     };
 
     getProducts();
 
     return function cleanup() {
+      // Stop listening to changes from Firebase
       unsubscribe();
     };
   }, []);
