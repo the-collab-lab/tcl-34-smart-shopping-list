@@ -1,13 +1,5 @@
-.div-button {
-  position:fixed;
-  bottom: 0;
-  height: 50px;
-}
-
-.button {
-  height: 30px;
-}
-
-.button:hover {
-  background-color: cornflowerblue;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }

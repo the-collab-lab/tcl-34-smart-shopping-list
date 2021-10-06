@@ -1,0 +1,27 @@
+.div-button {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.button {
+  height: 30px;
+  padding: 0 10px;
+}
+
+.button:hover {
+  background-color: rgb(87, 146, 255);
+}
+
+.button:focus {
+  background-color: rgb(87, 146, 255);
+}
+
+.link-button {
+  text-decoration: none;
+  color: black;
+}
