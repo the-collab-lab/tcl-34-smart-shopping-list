@@ -1,3 +1,4 @@
+import React from 'react';
 import './styles.css';
 import { Switch, Route, Link } from 'react-router-dom';
 
