@@ -2,29 +2,29 @@ import React from 'react';
 import './styles.css';
 import { Switch, Route, Link } from 'react-router-dom';
 
-const Listar = () => <h1>Listar</h1>;
-const Adicionar = () => <h1>Adicionar</h1>;
+const List = () => <h1>List</h1>;
+const Add = () => <h1>Add-item</h1>;
 
 export function Filters() {
   return (
     <Switch>
-      <Route exact path="/listar">
-        <Listar />
+      <Route exact path="/list">
+        <List />
       </Route>
-      <Route path="/adicionar">
-        <Adicionar />
+      <Route path="/add">
+        <Add />
       </Route>
       <div className="div-button">
-        <button className="button">
+        
           <Link className="link-button" to="/list">
             List
           </Link>
-        </button>
-        <button className="button">
-          <Link className="link-button" to="/add-item">
-            Add Item
+        
+        
+          <Link className="link-button" to="/add">
+            Add
           </Link>
-        </button>
+        
       </div>
     </Switch>
   );

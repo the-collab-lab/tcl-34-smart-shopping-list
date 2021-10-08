@@ -8,20 +8,27 @@
   width: 100%;
 }
 
-.button {
-  height: 30px;
-  padding: 0 10px;
-}
-
-.button:hover {
-  background-color: rgb(87, 146, 255);
-}
-
-.button:focus {
-  background-color: rgb(87, 146, 255);
-}
-
 .link-button {
-  color: black;
-  text-decoration: none;
+text-decoration: none;
+color: black;
+height: 30px;
+width: 60px;
+margin: 5px;
+background-color: gray;
+border: black;
+border-radius: 10px;
+text-align: center;
 }
+
+.link-button:hover {
+  background-color:dodgerblue; 
+}
+
+.link-button:hover {
+  background-color: dodgerblue;
+}
+
+.link-button:active {
+  color: white;
+}
+
