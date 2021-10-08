@@ -5,7 +5,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 const List = () => <h1>List</h1>;
 const Add = () => <h1>Add-item</h1>;
 
-export function Filters() {
+export function AppRouting() {
   return (
     <Switch>
       <Route exact path="/list">
@@ -14,18 +14,7 @@ export function Filters() {
       <Route path="/add">
         <Add />
       </Route>
-      <div className="div-button">
-        
-          <Link className="link-button" to="/list">
-            List
-          </Link>
-        
-        
-          <Link className="link-button" to="/add">
-            Add
-          </Link>
-        
-      </div>
+ 
     </Switch>
   );
 }
