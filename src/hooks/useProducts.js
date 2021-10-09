@@ -1,27 +1,12 @@
-import { db } from '../lib/firebase';
-import { collection, query, onSnapshot, addDoc } from '@firebase/firestore';
 import { useState, useEffect } from 'react';
+import { db } from '../lib/firebase';
+import { collection, query, onSnapshot } from '@firebase/firestore';
+import { parseData } from '../helpers/firebaseHelpers';
 
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
-  const addProduct = async () => {
-    try {
-      setLoading(true);
-
-      await addDoc(collection(db, 'products'), {
-        name: 'A test product',
-        date: Date.now(),
-      });
-
-      setLoading(false);
-    } catch (error) {
-      setError(true);
-      console.error('Error adding document: ', error);
-    }
-  };
 
   useEffect(() => {
     let unsubscribe;
@@ -34,13 +19,7 @@ export const useProducts = () => {
         const queryProducts = query(productsCollection);
 
         unsubscribe = onSnapshot(queryProducts, (querySnapshot) => {
-          const products = querySnapshot.docs.reduce((acc, doc) => {
-            const { name, date } = doc.data();
-            const id = doc.id;
-            return [...acc, { id, name, date }];
-          }, []);
-
-          setProducts(products);
+          setProducts(parseData(querySnapshot));
           setLoading(false);
         });
       } catch (error) {
@@ -57,5 +36,5 @@ export const useProducts = () => {
     };
   }, []);
 
-  return { products, addProduct, loading, error };
+  return { products, loading, error };
 };
