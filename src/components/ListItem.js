@@ -8,18 +8,21 @@ const ListItem = () => {
       return <p>You don't have any product in your list</p>;
     }
 
-    return products.map(({ id, name, date }) => (
-      <li key={id}>{`Product: ${name} => Created at: ${new Date(
-        date,
-      ).toLocaleString()}`}</li>
-    ));
+    return (
+      <ul>
+        {products.map(({ id, name, date }) => (
+          <li key={id}>{`Product: ${name} => Created at: ${new Date(
+            date,
+          ).toLocaleString()}`}</li>
+        ))}
+      </ul>
+    );
   };
 
   return (
     <div>
-      {loading ? <p>Loading...</p> : null}
       {error ? <p>There was an error</p> : null}
-      {!loading ? showProducts() : null}
+      {loading ? <p>Loading...</p> : showProducts()}
     </div>
   );
 };
