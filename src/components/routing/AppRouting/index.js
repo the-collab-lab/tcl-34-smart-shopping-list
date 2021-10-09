@@ -1,17 +1,17 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Add } from '../../pages/AddItemPage';
-import { List } from '../../pages/ListPage';
+import { AddItemPage } from '../../../pages/AddItemPage';
+import { ListPage } from '../../../pages/ListPage';
 
 export function AppRouting() {
   return (
     <div>
       <Switch>
         <Route exact path="/list">
-          <List />
+          <ListPage />
         </Route>
         <Route path="/addItem">
-          <Add />
+          <AddItemPage />
         </Route>
       </Switch>
     </div>

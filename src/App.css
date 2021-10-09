@@ -15,23 +15,23 @@
 }
 
 .link {
-  text-decoration: none;
-  color: black;
-  height: 30px;
-  width: 84px;
   background-color: #e1dada;
   border-radius: 5px;
+  color: black;
+  height: 30px;
   text-align: center;
+  text-decoration: none;
   padding: 5px;
+  width: 84px;
 }
 
 .link-selected {
-  text-decoration: none;
-  color: black;
-  height: 30px;
-  width: 84px;
   background-color: #6383ec;
   border-radius: 5px;
+  color: black;
+  height: 30px;
   text-align: center;
+  text-decoration: none;
   padding: 5px;
+  width: 84px;
 }
