@@ -4,7 +4,6 @@
   padding: 0;
 }
 
-
 .navigation {
   border-radius: 10px;
   bottom: 0;
@@ -15,26 +14,24 @@
   width: 100%;
 }
 
-.link-button {
-text-decoration: none;
-color: black;
-height: 30px;
-width: 60px;
-margin: 5px;
-background-color: gray;
-border: black;
-border-radius: 10px;
-text-align: center;
+.link {
+  text-decoration: none;
+  color: black;
+  height: 30px;
+  width: 84px;
+  background-color: #e1dada;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
 }
 
-.link-button:hover {
-  background-color:dodgerblue; 
-}
-
-.link-button:hover {
-  background-color: dodgerblue;
-}
-
-.link-button:active {
-  color: white;
+.link-selected {
+  text-decoration: none;
+  color: black;
+  height: 30px;
+  width: 84px;
+  background-color: #6383ec;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
 }
