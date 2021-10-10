@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+.container {
+  text-align: center;
+}
+
 .navigation {
   border-radius: 10px;
   bottom: 0;
