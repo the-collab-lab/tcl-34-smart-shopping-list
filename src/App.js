@@ -7,9 +7,7 @@ import Navigation from './components/routing/Navigation';
 function App() {
   return (
     <Router>
-      <div className="App">
-        <AppRouting />
-      </div>
+      <AppRouting />
       <Navigation />
     </Router>
   );
