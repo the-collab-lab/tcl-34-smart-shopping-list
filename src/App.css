@@ -4,18 +4,29 @@
   padding: 0;
 }
 
-.container {
+.content-container {
+  height: calc(100vh - 100px);
   text-align: center;
+  overflow: auto;
+  margin-top: 50px;
 }
 
-.navigation {
+.fixed {
+  align-items: center;
   border-radius: 10px;
-  bottom: 0;
   display: flex;
   height: 50px;
   justify-content: center;
   position: fixed;
   width: 100%;
+}
+
+.navigation {
+  bottom: 0;
+}
+
+.title {
+  top: 0;
 }
 
 .link {
@@ -29,13 +40,7 @@
   width: 84px;
 }
 
-.link-selected {
+.selected {
   background-color: #6383ec;
-  border-radius: 5px;
-  color: black;
-  height: 30px;
-  text-align: center;
-  text-decoration: none;
-  padding: 5px;
-  width: 84px;
+  color: white;
 }
