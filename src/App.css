@@ -11,6 +11,10 @@ button {
   cursor: pointer;
 }
 
+ul {
+  list-style: none;
+}
+
 .content-container {
   height: calc(100vh - 100px);
   text-align: center;

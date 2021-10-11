@@ -10,10 +10,8 @@ const ItemsList = () => {
 
     return (
       <ul>
-        {products.map(({ id, name, date }) => (
-          <li key={id}>{`Product: ${name} => Created at: ${new Date(
-            date,
-          ).toLocaleString()}`}</li>
+        {products.map(({ id, name }) => (
+          <li key={id}>{`Product: ${name}`}</li>
         ))}
       </ul>
     );
