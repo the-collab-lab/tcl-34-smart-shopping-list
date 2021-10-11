@@ -1,6 +1,6 @@
-import { useProducts } from '../hooks/useProducts';
+import { useProducts } from '../../hooks/useProducts';
 
-const ListItem = () => {
+const ItemsList = () => {
   const { products, loading, error } = useProducts();
 
   const showProducts = () => {
@@ -27,4 +27,4 @@ const ListItem = () => {
   );
 };
 
-export default ListItem;
+export default ItemsList;
