@@ -20,10 +20,10 @@ const ListItem = () => {
   };
 
   return (
-    <div>
+    <>
       {error ? <p>There was an error</p> : null}
       {loading ? <p>Loading...</p> : showProducts()}
-    </div>
+    </>
   );
 };
 
