@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { addProduct } from '../utils/firebaseUtils';
+import { addProduct } from '../../utils/firebaseUtils';
 
-const CreateItem = () => {
+const CreateItemButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -16,11 +16,13 @@ const CreateItem = () => {
 
   return (
     <div>
-      <button onClick={handleClick}>Add new product</button>
+      <button className="link" onClick={handleClick}>
+        Add Item
+      </button>
       {isLoading ? <p>Adding product...</p> : null}
       {error ? <p>Unable to add product. Please, try again.</p> : null}
     </div>
   );
 };
 
-export default CreateItem;
+export default CreateItemButton;
