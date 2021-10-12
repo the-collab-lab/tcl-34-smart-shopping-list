@@ -1,19 +1,25 @@
 import { getToken } from '@the-collab-lab/shopping-list-utils';
-import { useLocalStorage } from '../../hooks/useLocalStorage.js';
+import { useHistory } from 'react-router-dom';
 
 export const CreateList = () => {
-  /*
-  As our custom hook useLocalStorage receives 2 params
-  itemName and initialValue we must pass them when using the hook
+  let history = useHistory();
+  const push = history.push;
 
-  itemName is how we are calling that portion of local storage in use
-  initialValue is what data type we are going to store
+  const generateToken = () => {
+    const token = getToken();
+    localStorage.setItem('token', token);
+    push('/list');
+  };
 
-  */
+  return (
+    <div className="container">
+      {console.log(getToken())}
 
-  const LOCAL_STORAGE = 'ITEM_LIST_V1';
-  const [storedValue, setValue] = useLocalStorage(LOCAL_STORAGE, []);
-
-  setValue(getToken());
-  return <>{console.log(getToken())}</>;
+      <h1>
+        Welcome to your <br />
+        Smart Shopping list!
+      </h1>
+      <button onClick={generateToken}> Create a new list</button>
+    </div>
+  );
 };
