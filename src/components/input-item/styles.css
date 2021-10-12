@@ -2,19 +2,28 @@
   border-radius: 4px;
   line-height: 2;
   margin-bottom: 20px;
+  padding: 0px 10px;
+  width: 100%;
 }
 
-.form-item {
-  display: flex;
+.item-form {
+  align-items: center;
   flex-direction: column;
-  font-size: 25px;
-  justify-content: space-between;
 }
 
 .time-frame {
   display: flex;
   flex-direction: column;
-  font-size: 25px;
+  font-size: 15px;
+  margin-bottom: 10px;
   list-style-type: none;
-  letter-spacing: 1px;
+  padding: 10px 0;
+}
+
+.item-name {
+  padding: 10px 0;
+}
+
+.time-frame-question {
+  padding: 10px 0;
 }

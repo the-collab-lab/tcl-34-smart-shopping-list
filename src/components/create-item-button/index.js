@@ -10,7 +10,7 @@ const CreateItemButton = () => {
     setIsLoading(true);
 
     addProduct()
-      .then((res) => console.log(res))
+      .then((value) => console.log(value))
       .catch((error) => setError(error))
       .finally(() => setIsLoading(false));
   };

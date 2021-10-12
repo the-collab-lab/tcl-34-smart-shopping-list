@@ -16,11 +16,11 @@ ul {
 }
 
 .content-container {
-  height: calc(100vh - 100px);
-  text-align: center;
-  overflow: auto;
-  margin-top: 50px;
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 50px;
 }
 
 .fixed {
@@ -43,26 +43,26 @@ ul {
 
 .link {
   background-color: #e1dada;
+  border: none;
   border-radius: 5px;
   color: black;
+  font-size: 16px;
+  min-width: 84px;
+  padding: 5px;
   text-align: center;
   text-decoration: none;
-  padding: 5px;
-  min-width: 84px;
-  border: none;
-  font-size: 16px;
 }
 
 .link {
   background-color: #e1dada;
+  border: none;
   border-radius: 5px;
   color: black;
+  font-size: 16px;
+  min-width: 84px;
+  padding: 5px;
   text-align: center;
   text-decoration: none;
-  padding: 5px;
-  min-width: 84px;
-  border: none;
-  font-size: 16px;
 }
 
 .selected {
