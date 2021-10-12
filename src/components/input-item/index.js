@@ -3,7 +3,7 @@ import './styles.css';
 
 const InputItem = (props) => {
   const [value, setValue] = useState('');
-  const setNewItem = props.setNewItem;
+  const { setNewItem, formState, handleForm } = props;
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -17,38 +17,49 @@ const InputItem = (props) => {
       <p className="item-name">Item name:</p>
       <input
         className="input-item"
+        name="productName"
         type="text"
         placeholder="Item"
         onKeyDown={handleKeyDown}
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
+        value={formState.productName}
+        onChange={(event) => handleForm(event)}
       />
-      <p className="time-frame-question">How soon will you buy this again?</p>
-      <div className="time-frame">
+      <fieldset className="time-frame">
+        <leyend className="time-frame-question">
+          How soon will you buy this again?
+        </leyend>
         <label>
-          <input type="radio" value="Soon" name="timeframe" id="timeframe" />
+          <input
+            type="radio"
+            value="7"
+            name="timeFrame"
+            id="timeFrame"
+            onChange={(event) => props.handleForm(event)}
+          />
           Soon
         </label>
         <label>
           <input
             type="radio"
-            value="Kind of Soon"
-            name="timeframe"
-            id="timeframe"
+            value="14"
+            name="timeFrame"
+            id="timeFrame"
+            onChange={(event) => props.handleForm(event)}
           />
           Kind of Soon
         </label>
         <label>
           <input
             type="radio"
-            value="Not Soon"
-            name="timeframe"
-            id="timeframe"
+            value="30"
+            name="timeFrame"
+            id="timeFrame"
+            onChange={(event) => props.handleForm(event)}
           />
           Not Soon
         </label>
         <span class="required" />
-      </div>
+      </fieldset>
     </div>
   );
 };

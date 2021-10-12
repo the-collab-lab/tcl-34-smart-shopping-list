@@ -5,19 +5,29 @@ import InputItem from '../input-item';
 const CreateItemButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [formState, setFormState] = useState({
+    productName: '',
+    timeFrame: 7,
+    date: null,
+  });
 
   const handleClick = () => {
     setIsLoading(true);
 
-    addProduct()
-      .then((value) => console.log(value))
+    addProduct(formState)
+      .then((res) => console.log(res))
       .catch((error) => setError(error))
       .finally(() => setIsLoading(false));
   };
 
+  const handleForm = (event) => {
+    const { name, value } = event.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
   return (
     <div>
-      <InputItem />
+      <InputItem handleForm={handleForm} formState={formState} />
       <button className="link" onClick={handleClick}>
         Add Item
       </button>

@@ -1,8 +1,9 @@
 import { db } from '../lib/firebase';
 import { collection, addDoc } from '@firebase/firestore';
 
-export const addProduct = () =>
+export const addProduct = ({ productName, timeFrame, date }) =>
   addDoc(collection(db, 'products'), {
-    productName: 'A test product',
-    date: Date.now(),
+    productName,
+    timeFrame,
+    date,
   });
