@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { addProduct } from '../../utils/firebaseUtils';
+import InputItem from '../input-item';
 
 const CreateItemButton = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,6 +17,7 @@ const CreateItemButton = () => {
 
   return (
     <div>
+      <InputItem />
       <button className="link" onClick={handleClick}>
         Add Item
       </button>

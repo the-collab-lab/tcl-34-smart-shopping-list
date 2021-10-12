@@ -10,8 +10,8 @@ const ItemsList = () => {
 
     return (
       <ul>
-        {products.map(({ id, name }) => (
-          <li key={id}>{`Product: ${name}`}</li>
+        {products.map(({ id, productName }) => (
+          <li key={id}>{`Product: ${productName}`}</li>
         ))}
       </ul>
     );

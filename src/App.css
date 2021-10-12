@@ -53,6 +53,18 @@ ul {
   font-size: 16px;
 }
 
+.link {
+  background-color: #e1dada;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  padding: 5px;
+  min-width: 84px;
+  border: none;
+  font-size: 16px;
+}
+
 .selected {
   background-color: #6383ec;
   color: white;
