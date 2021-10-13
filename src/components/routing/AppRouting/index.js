@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { AddItemPage } from '../../../pages/AddItemPage';
 import { ListPage } from '../../../pages/ListPage';
-import { CreateList } from '../../CreateList';
+import { Welcome } from '../../../pages/Welcome';
 
 export function AppRouting() {
   return (
@@ -15,7 +15,7 @@ export function AppRouting() {
           <AddItemPage />
         </Route>
         <Route path="/">
-          <CreateList />
+          <Welcome />
         </Route>
       </Switch>
     </div>
