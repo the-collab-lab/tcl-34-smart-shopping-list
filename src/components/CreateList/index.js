@@ -12,8 +12,12 @@ export const CreateList = () => {
   */
 
   const LOCAL_STORAGE = 'ITEM_LIST_V1';
-  const [storedValue, setValue] = useLocalStorage(LOCAL_STORAGE, []);
+  const [storedValue, setValue] = useLocalStorage(LOCAL_STORAGE, '');
 
-  setValue(getToken());
-  return <>{console.log(getToken())}</>;
+  const generateToken = () => {
+    const token = getToken();
+    console.log(token);
+    setValue(token);
+  };
+  return <button onClick={() => generateToken()}>create</button>;
 };
