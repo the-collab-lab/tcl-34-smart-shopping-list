@@ -8,7 +8,7 @@ export function AppRouting() {
   return (
     <div>
       <Switch>
-        <Route exact path="/list">
+        <Route path="/list">
           <ListPage />
         </Route>
         <Route path="/addItem">
