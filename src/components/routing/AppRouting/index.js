@@ -8,14 +8,14 @@ export function AppRouting() {
   return (
     <div>
       <Switch>
+       <Route exact path="/">
+          <Welcome />
+        </Route>
         <Route path="/list">
           <ListPage />
         </Route>
         <Route path="/addItem">
           <AddItemPage />
-        </Route>
-        <Route path="/">
-          <Welcome />
         </Route>
       </Switch>
     </div>
