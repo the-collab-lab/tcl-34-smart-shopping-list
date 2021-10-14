@@ -6,17 +6,18 @@
   width: 100%;
 }
 
-.time-frame-label {
-  margin-bottom: 8px;
-}
-
 .time-frame {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   font-size: 15px;
   margin-bottom: 60px;
   list-style-type: none;
   padding: 15px;
+}
+
+.time-frame-label {
+  margin-bottom: 8px;
 }
 
 .item-name {
