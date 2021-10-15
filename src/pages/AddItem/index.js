@@ -44,7 +44,10 @@ export const AddItemPage = () => {
 
   const handleForm = (event) => {
     const { name, value } = event.target;
-    setFormState({ ...formState, [name]: value });
+    setFormState((formState) => ({
+      ...formState,
+      [name]: value,
+    }));
   };
 
   return (
