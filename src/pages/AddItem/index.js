@@ -3,6 +3,7 @@ import Button from '../../components/button';
 import Title from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import AddForm from '../../components/add-form';
+import Navigation from '../../components/routing/Navigation';
 import { addProduct } from '../../utils/firebaseUtils';
 import './styles.css';
 
@@ -64,6 +65,7 @@ export const AddItemPage = () => {
         {isLoading ? <p>Adding product...</p> : null}
         {message ? <p>{message}</p> : null}
       </ContentContainer>
+      <Navigation />
     </>
   );
 };
