@@ -1,0 +1,25 @@
+.input-item {
+  border-radius: 4px;
+  line-height: 2;
+  margin-bottom: 20px;
+  padding: 0px 10px;
+  width: 100%;
+}
+
+.time-frame {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  margin-bottom: 60px;
+  list-style-type: none;
+  padding: 15px;
+}
+
+.time-frame-label {
+  margin-bottom: 8px;
+}
+
+.item-name {
+  padding: 10px 0;
+}

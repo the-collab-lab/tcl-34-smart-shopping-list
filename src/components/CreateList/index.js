@@ -6,7 +6,7 @@ export const CreateList = () => {
   const { push } = useHistory();
 
   const LOCAL_STORAGE = 'ITEM_LIST_V1';
-  const [setValue] = useLocalStorage(LOCAL_STORAGE, '');
+  const { setValue } = useLocalStorage(LOCAL_STORAGE, '');
 
   const generateToken = () => {
     const token = getToken();

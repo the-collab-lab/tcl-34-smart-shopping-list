@@ -7,7 +7,7 @@ function CustomLink({ children, to }) {
     exact: true,
   });
   return (
-    <Link className={match ? 'link-selected' : 'link'} to={to}>
+    <Link className={`link ${match ? 'selected' : ''}`} to={to}>
       {children}
     </Link>
   );
@@ -15,7 +15,7 @@ function CustomLink({ children, to }) {
 
 function Navigation() {
   return (
-    <nav className="navigation">
+    <nav className="fixed navigation">
       <CustomLink to="/list"> List </CustomLink>
       <CustomLink to="/addItem"> Add Item </CustomLink>
     </nav>
