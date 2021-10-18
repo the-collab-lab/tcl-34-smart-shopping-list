@@ -1,11 +1,16 @@
 import { db } from '../lib/firebase';
 import { collection, addDoc } from '@firebase/firestore';
 
-export const addProduct = ({ productName, timeFrame, lastPurchaseDate }) =>
+export const addProduct = ({
+  productName,
+  timeFrame,
+  lastPurchaseDate,
+  listToken,
+}) =>
   addDoc(collection(db, 'products'), {
     productName,
     timeFrame,
     lastPurchaseDate,
-    userToken: Math.floor(Math.random() * 11),
+    listToken,
     date: Date.now(),
   });
