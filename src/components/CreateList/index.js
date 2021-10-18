@@ -4,9 +4,7 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 export const CreateList = () => {
   const { push } = useHistory();
-
-  const LOCAL_STORAGE = 'ITEM_LIST_V1';
-  const { setValue } = useLocalStorage(LOCAL_STORAGE, '');
+  const { setValue } = useLocalStorage();
 
   const generateToken = () => {
     const token = getToken();
