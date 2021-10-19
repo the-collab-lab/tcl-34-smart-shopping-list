@@ -19,6 +19,13 @@ ul {
   list-style: none;
 }
 
+.container {
+  text-align: center;
+  overflow: auto;
+  margin-top: 50px;
+  padding: 20px;
+}
+
 .content-container {
   height: calc(100vh - 100px);
   text-align: center;
