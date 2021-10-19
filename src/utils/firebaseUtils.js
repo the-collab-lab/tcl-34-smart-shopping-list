@@ -1,11 +1,8 @@
 import { db } from '../lib/firebase';
-import { collection, addDoc } from '@firebase/firestore';
+import { setDoc, doc, updateDoc } from '@firebase/firestore';
 
 export const createListToken = (listToken) =>
-  addDoc(collection(db, 'listToken'), {
-    listToken,
-    date: Date.now(),
-  });
+  setDoc(doc(db, 'listTokens', listToken), {});
 
 export const addProduct = ({
   productName,
@@ -13,10 +10,11 @@ export const addProduct = ({
   lastPurchaseDate,
   listToken,
 }) =>
-  addDoc(collection(db, 'products'), {
-    productName,
-    timeFrame,
-    lastPurchaseDate,
-    listToken,
-    date: Date.now(),
+  updateDoc(doc(db, 'listTokens', listToken), {
+    [`${productName}`]: {
+      productName,
+      timeFrame,
+      lastPurchaseDate,
+      date: Date.now(),
+    },
   });
