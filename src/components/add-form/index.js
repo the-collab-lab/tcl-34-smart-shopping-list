@@ -4,10 +4,8 @@ import './styles.css';
 
 const AddForm = ({ setNewItem, formState, handleForm }) => {
   const [value, setValue] = useState('');
-
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      setNewItem(value);
       setValue('');
     }
   };
