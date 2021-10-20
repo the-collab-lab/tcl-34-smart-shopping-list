@@ -1,17 +1,17 @@
-import { useProducts } from '../../hooks/useProducts';
+import { useList } from '../../hooks/useList';
 
 const ItemsList = () => {
-  const { products, loading, error } = useProducts();
+  const { list, loading, error } = useList();
 
   const showProducts = () => {
-    if (products.length === 0) {
+    if (list.length === 0) {
       return <p>You don't have any product in your list</p>;
     }
 
     return (
       <ul>
-        {products.map(({ id, productName }) => (
-          <li key={id}>{productName}</li>
+        {list.map(({ date, productName }) => (
+          <li key={date}>{productName}</li>
         ))}
       </ul>
     );
