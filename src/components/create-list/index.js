@@ -2,6 +2,7 @@ import { getToken } from '@the-collab-lab/shopping-list-utils';
 import { useHistory } from 'react-router-dom';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { createListToken } from '../../utils/firebaseUtils';
+import Button from '../button';
 
 export const CreateList = () => {
   const { push } = useHistory();
@@ -13,9 +14,10 @@ export const CreateList = () => {
     createListToken(token);
     push('/list');
   };
+
   return (
-    <div className="container">
-      <button onClick={generateToken}> Create a new list</button>
-    </div>
+    <Button onClick={generateToken} className="welcome-button link">
+      Create a new list
+    </Button>
   );
 };
