@@ -5,7 +5,7 @@ const ItemsList = () => {
 
   const showProducts = () => {
     if (list.length === 0) {
-      return <p>You don't have any product in your list</p>;
+      return <p>You don't have any product in your list </p>;
     }
 
     return (
@@ -19,7 +19,7 @@ const ItemsList = () => {
 
   return (
     <>
-      {error ? <p>There was an error</p> : null}
+      {error ? <p>There was an error </p> : null}
       {loading ? <p>Loading...</p> : showProducts()}
     </>
   );
