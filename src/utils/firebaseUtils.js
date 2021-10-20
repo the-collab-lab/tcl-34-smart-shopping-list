@@ -1,5 +1,5 @@
 import { db } from '../lib/firebase';
-import { setDoc, doc, updateDoc } from '@firebase/firestore';
+import { setDoc, doc, updateDoc, getDoc } from '@firebase/firestore';
 
 export const createListToken = (listToken) =>
   setDoc(doc(db, 'listTokens', listToken), {});
@@ -18,3 +18,8 @@ export const addProduct = ({
       date: Date.now(),
     },
   });
+
+export const getList = (token) => {
+  const docRef = doc(db, 'listTokens', token);
+  return getDoc(docRef);
+};
