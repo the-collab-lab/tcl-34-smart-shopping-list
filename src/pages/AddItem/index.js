@@ -25,20 +25,16 @@ export const AddItemPage = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
-
+    console.log(products);
     /*
     Checks the state if the product already exists
     Find returns undefined if it has not matches
     */
+    const normalizer = (input) => input.toUpperCase().replaceAll(/[.,:;]/g, '');
     const checkProduct = products.find(
-      (product) => product.productName === formState.productName,
+      (product) =>
+        normalizer(product.productName) === normalizer(formState.productName),
     );
-
-    /*    const regExp = '/[.,-_{}+!¡°()`~¨]/g'
-    console.log("1 "+checkProduct)
-    const data  = checkProduct.productName
-    const normalizeData = data.replace(regExp, "")
-    console.log("2" + normalizeData)*/
     /*
     We have to compare explicitely if it is undefined, otherwise
     it wouldn't work as expected
