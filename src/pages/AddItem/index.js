@@ -15,7 +15,6 @@ export const AddItemPage = () => {
   const { products } = useProducts();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
-  const [error, setError] = useState(false);
   const [formState, setFormState] = useState({
     productName: '',
     timeFrame: '7',
@@ -31,9 +30,9 @@ export const AddItemPage = () => {
     Find returns undefined if it has not matches
     */
     const normalizer = (input) => input.toUpperCase().replaceAll(/[.,:;]/g, '');
+    const normalizedInput = normalizer(formState.productName);
     const checkProduct = products.find(
-      (product) =>
-        normalizer(product.productName) === normalizer(formState.productName),
+      (product) => normalizer(product.productName) === normalizedInput,
     );
     /*
     We have to compare explicitely if it is undefined, otherwise
@@ -42,7 +41,6 @@ export const AddItemPage = () => {
     if (checkProduct === undefined) {
       addProduct(formState)
         .then((res) => console.log(res))
-        .catch(() => setError(true))
         .finally(() => {
           setIsLoading(false);
           console.log(formState.productName);
@@ -52,12 +50,10 @@ export const AddItemPage = () => {
             lastPurchaseDate: null,
           });
         });
-    } else {
-      setIsLoading(false);
-      setError(true);
     }
+    setIsLoading(false);
     setMessage(
-      error
+      checkProduct
         ? 'It seems you have already added this product. Try another one.'
         : 'Successfully created product!',
     );
