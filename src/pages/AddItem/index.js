@@ -24,7 +24,6 @@ export const AddItemPage = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
-    console.log(products);
     /*
     Checks the state if the product already exists
     Find returns undefined if it has not matches
@@ -43,7 +42,6 @@ export const AddItemPage = () => {
         .then((res) => console.log(res))
         .finally(() => {
           setIsLoading(false);
-          console.log(formState.productName);
           setFormState({
             productName: '',
             timeFrame: '7',
