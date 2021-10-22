@@ -26,7 +26,9 @@ export const ListPage = () => {
 
   return (
     <>
-      <Header className="page-header">List</Header>
+      {!loading && !error ? (
+        <Header className="page-header">List</Header>
+      ) : null}
       <ContentContainer>
         {loading ? <p>Loading...</p> : null}
         {!loading && error ? (
