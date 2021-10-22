@@ -24,21 +24,28 @@ export const ListPage = () => {
     );
   };
 
+  if (loading) {
+    return (
+      <ContentContainer>
+        <p>Loading...</p>
+      </ContentContainer>
+    );
+  }
+
+  if (error) {
+    return (
+      <ContentContainer>
+        <p style={{ marginBottom: '20px' }}>There was an error</p>
+        <Button onClick={() => push('/')}>Try again</Button>
+      </ContentContainer>
+    );
+  }
+
   return (
     <>
-      {!loading && !error ? (
-        <Header className="page-header">List</Header>
-      ) : null}
-      <ContentContainer>
-        {loading ? <p>Loading...</p> : null}
-        {!loading && error ? (
-          <Button onClick={() => push('/')}>
-            There was an error, try again
-          </Button>
-        ) : null}
-        {!loading && !error ? showProducts() : null}
-      </ContentContainer>
-      {!loading && !error ? <Navigation /> : null}
+      <Header className="page-header">List</Header>
+      <ContentContainer>{showProducts()}</ContentContainer>
+      <Navigation />
     </>
   );
 };
