@@ -8,6 +8,11 @@
   margin: 40px 0;
 }
 
+.welcome-header {
+  position: relative;
+  top: unset;
+}
+
 .center {
   text-align: center;
 }

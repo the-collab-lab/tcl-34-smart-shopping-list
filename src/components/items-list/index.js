@@ -20,11 +20,14 @@ const ItemsList = () => {
 
   return (
     <>
-      {error ? <p>There was an error       <Link to="/"> try again </Link> </p> : null}
+      {error ? (
+        <p>
+          There was an error <Link to="/"> try again </Link>{' '}
+        </p>
+      ) : null}
       {loading ? <p>Loading...</p> : showProducts()}
     </>
   );
 };
-
 
 export default ItemsList;

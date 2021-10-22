@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Title from '../../components/title';
+import Header from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import Navigation from '../../components/routing/Navigation';
 import Button from '../../components/button';
@@ -26,7 +26,7 @@ export const ListPage = () => {
 
   return (
     <>
-      <Title>List</Title>
+      <Header className="page-header">List</Header>
       <ContentContainer>
         {loading ? <p>Loading...</p> : null}
         {!loading && error ? (

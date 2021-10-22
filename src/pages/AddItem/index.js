@@ -3,7 +3,7 @@ import { addProduct } from '../../utils/firebaseUtils';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 import Button from '../../components/button';
-import Title from '../../components/title';
+import Header from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import AddForm from '../../components/add-form';
 import Navigation from '../../components/routing/Navigation';
@@ -57,7 +57,7 @@ export const AddItemPage = () => {
 
   return (
     <>
-      <Title>Add Item</Title>
+      <Header className="page-header">Add Item</Header>
       <ContentContainer>
         <form onSubmit={onSubmit} className="add-form">
           <AddForm handleForm={handleForm} formState={formState} />
