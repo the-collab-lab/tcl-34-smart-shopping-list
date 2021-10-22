@@ -4,11 +4,15 @@ import Title from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import AddForm from '../../components/add-form';
 import Navigation from '../../components/routing/Navigation';
+
+//Utils
 import { addProduct } from '../../utils/firebaseUtils';
+import { normalizer } from '../../utils/normalizer';
 
 //Hooks
 import { useProducts } from '../../hooks/useProducts';
 
+//Styles
 import './styles.css';
 
 export const AddItemPage = () => {
@@ -24,11 +28,11 @@ export const AddItemPage = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
+
     /*
     Checks the state if the product already exists
     Find returns undefined if it has not matches
     */
-    const normalizer = (input) => input.toUpperCase().replaceAll(/[.,:;]/g, '');
     const normalizedInput = normalizer(formState.productName);
     const checkProduct = products.find(
       (product) => normalizer(product.productName) === normalizedInput,
