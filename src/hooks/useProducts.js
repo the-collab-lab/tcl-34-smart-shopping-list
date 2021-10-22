@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { db } from '../lib/firebase';
 import { collection, query, onSnapshot } from '@firebase/firestore';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { parseData } from '../helpers/firebaseHelpers';
 
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const { storedValue } = useLocalStorage();
 
   useEffect(() => {
     let unsubscribe;
@@ -15,7 +17,7 @@ export const useProducts = () => {
     // Retrieves information from Firestore
     const getProducts = async () => {
       try {
-        const productsCollection = await collection(db, 'products');
+        const productsCollection = await collection(db, storedValue);
         const queryProducts = query(productsCollection);
 
         unsubscribe = onSnapshot(queryProducts, (querySnapshot) => {

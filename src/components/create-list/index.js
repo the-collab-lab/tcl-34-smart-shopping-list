@@ -4,7 +4,6 @@ import {
   useLocalStorage,
   LOCAL_STORAGE_LIST_TOKEN,
 } from '../../hooks/useLocalStorage';
-import { createListToken } from '../../utils/firebaseUtils';
 import Button from '../button';
 
 export const CreateList = () => {
@@ -14,7 +13,6 @@ export const CreateList = () => {
   const generateToken = () => {
     const token = getToken();
     setValue(token);
-    createListToken(token);
     push('/list');
   };
 

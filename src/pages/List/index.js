@@ -4,21 +4,21 @@ import Header from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import Navigation from '../../components/routing/Navigation';
 import Button from '../../components/button';
-import { useList } from '../../hooks/useList';
+import { useProducts } from '../../hooks/useProducts';
 
 export const ListPage = () => {
-  const { list, loading, error } = useList();
+  const { products, loading, error } = useProducts();
   const { push } = useHistory();
 
   const showProducts = () => {
-    if (list.length === 0) {
+    if (products.length === 0) {
       return <p>You don't have any product in your list </p>;
     }
 
     return (
       <ul>
-        {list.map(({ date, productName }) => (
-          <li key={date}>{productName}</li>
+        {products.map(({ id, productName }) => (
+          <li key={id}>{productName}</li>
         ))}
       </ul>
     );
