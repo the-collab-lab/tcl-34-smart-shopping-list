@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import RadioInput from '../radio-input';
 import './styles.css';
 
-const AddForm = ({ setNewItem, formState, handleForm }) => {
+const AddForm = ({ formState, handleForm }) => {
   const [value, setValue] = useState('');
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
