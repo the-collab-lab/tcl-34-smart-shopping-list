@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { addProduct } from '../../utils/firebaseUtils';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import {
+  useLocalStorage,
+  LOCAL_STORAGE_LIST_TOKEN,
+} from '../../hooks/useLocalStorage';
 
 import Button from '../../components/button';
 import Header from '../../components/title';
@@ -11,7 +14,7 @@ import Navigation from '../../components/routing/Navigation';
 import './styles.css';
 
 export const AddItemPage = () => {
-  const { storedValue } = useLocalStorage();
+  const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(false);

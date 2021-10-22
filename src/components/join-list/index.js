@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import {
+  useLocalStorage,
+  LOCAL_STORAGE_LIST_TOKEN,
+} from '../../hooks/useLocalStorage';
 import Button from '../button';
 
 export const JoinList = () => {
   const history = useHistory();
-  const { setValue } = useLocalStorage();
+  const { setValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
   const [listToken, setListToken] = useState('');
 
   const retrieveList = (e) => {

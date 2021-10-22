@@ -1,12 +1,15 @@
 import { getToken } from '@the-collab-lab/shopping-list-utils';
 import { useHistory } from 'react-router-dom';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import {
+  useLocalStorage,
+  LOCAL_STORAGE_LIST_TOKEN,
+} from '../../hooks/useLocalStorage';
 import { createListToken } from '../../utils/firebaseUtils';
 import Button from '../button';
 
 export const CreateList = () => {
   const { push } = useHistory();
-  const { setValue } = useLocalStorage();
+  const { setValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
 
   const generateToken = () => {
     const token = getToken();
