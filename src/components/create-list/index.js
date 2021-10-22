@@ -13,7 +13,7 @@ export const CreateList = () => {
   const generateToken = () => {
     const token = getToken();
     setValue(token);
-    push('/list');
+    push('/addItem');
   };
 
   return (

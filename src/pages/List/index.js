@@ -10,19 +10,13 @@ export const ListPage = () => {
   const { products, loading, error } = useProducts();
   const { push } = useHistory();
 
-  const showProducts = () => {
-    if (products.length === 0) {
-      return <p>You don't have any product in your list </p>;
-    }
-
-    return (
-      <ul>
-        {products.map(({ id, productName }) => (
-          <li key={id}>{productName}</li>
-        ))}
-      </ul>
-    );
-  };
+  const showProducts = () => (
+    <ul>
+      {products.map(({ id, productName }) => (
+        <li key={id}>{productName}</li>
+      ))}
+    </ul>
+  );
 
   if (loading) {
     return (
@@ -32,7 +26,7 @@ export const ListPage = () => {
     );
   }
 
-  if (error) {
+  if (error || products.length === 0) {
     return (
       <ContentContainer>
         <p style={{ marginBottom: '20px' }}>There was an error</p>

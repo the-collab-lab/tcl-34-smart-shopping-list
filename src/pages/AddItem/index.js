@@ -4,6 +4,7 @@ import {
   useLocalStorage,
   LOCAL_STORAGE_LIST_TOKEN,
 } from '../../hooks/useLocalStorage';
+import { useProducts } from '../../hooks/useProducts';
 
 import Button from '../../components/button';
 import Header from '../../components/title';
@@ -15,6 +16,7 @@ import './styles.css';
 
 export const AddItemPage = () => {
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
+  const { products } = useProducts();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(false);
@@ -72,7 +74,7 @@ export const AddItemPage = () => {
         {isLoading ? <p>Adding product...</p> : null}
         {message ? <p>{message}</p> : null}
       </ContentContainer>
-      <Navigation />
+      <Navigation disableList={products.length === 0} />
     </>
   );
 };

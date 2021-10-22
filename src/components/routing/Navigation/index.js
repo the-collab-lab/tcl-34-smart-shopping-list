@@ -1,22 +1,32 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
-function CustomLink({ children, to }) {
+import './styles.css';
+
+function CustomLink({ children, to, disable }) {
   const match = useRouteMatch({
     path: to,
     exact: true,
   });
   return (
-    <Link className={`link ${match ? 'selected' : ''}`} to={to}>
+    <Link
+      className={`link ${match ? 'selected' : ''} ${
+        disable ? 'disable-link' : ''
+      }`}
+      to={to}
+    >
       {children}
     </Link>
   );
 }
 
-function Navigation() {
+function Navigation({ disableList = false }) {
   return (
     <nav className="fixed navigation">
-      <CustomLink to="/list"> List </CustomLink>
+      <CustomLink to="/list" disable={disableList}>
+        {' '}
+        List{' '}
+      </CustomLink>
       <CustomLink to="/addItem"> Add Item </CustomLink>
     </nav>
   );
