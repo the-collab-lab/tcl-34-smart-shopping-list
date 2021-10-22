@@ -17,12 +17,6 @@ export const JoinList = () => {
     history.push('/list');
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      setListToken(event.target.value);
-    }
-  };
-
   return (
     <form onSubmit={retrieveList} className="add-form">
       <label htmlFor="productName">
@@ -33,7 +27,6 @@ export const JoinList = () => {
           name="productName"
           type="text"
           placeholder="Token"
-          onKeyDown={handleKeyDown}
           value={listToken}
           onChange={(event) => setListToken(event.target.value)}
           style={{ marginTop: '8px' }}
