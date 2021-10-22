@@ -19,11 +19,14 @@ export const AddItemPage = () => {
   const { products } = useProducts();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
-  const [formState, setFormState] = useState({
+
+  const defaultValues = {
     productName: '',
     timeFrame: '7',
     lastPurchaseDate: null,
-  });
+  };
+
+  const [formState, setFormState] = useState(defaultValues);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -46,11 +49,7 @@ export const AddItemPage = () => {
         .then((res) => console.log(res))
         .finally(() => {
           setIsLoading(false);
-          setFormState({
-            productName: '',
-            timeFrame: '7',
-            lastPurchaseDate: null,
-          });
+          setFormState(defaultValues);
         });
     }
     setIsLoading(false);
