@@ -8,6 +8,7 @@ import Navigation from '../../components/routing/Navigation';
 //Utils
 import { addProduct } from '../../utils/firebaseUtils';
 import { normalizer } from '../../utils/normalizer';
+import { checkProduct } from '../../utils/checkProduct';
 
 //Hooks
 import { useProducts } from '../../hooks/useProducts';
@@ -37,14 +38,12 @@ export const AddItemPage = () => {
     Find returns undefined if it has not matches
     */
     const normalizedInput = normalizer(formState.productName);
-    const checkProduct = products.find(
-      (product) => normalizer(product.productName) === normalizedInput,
-    );
+    const duplicatedProduct = checkProduct(products, normalizedInput);
     /*
     We have to compare explicitely if it is undefined, otherwise
     it wouldn't work as expected
     */
-    if (checkProduct === undefined) {
+    if (duplicatedProduct === undefined) {
       addProduct(formState)
         .then((res) => console.log(res))
         .finally(() => {
@@ -54,7 +53,7 @@ export const AddItemPage = () => {
     }
     setIsLoading(false);
     setMessage(
-      checkProduct
+      duplicatedProduct
         ? 'It seems you have already added this product. Try another one.'
         : 'Successfully created product!',
     );
