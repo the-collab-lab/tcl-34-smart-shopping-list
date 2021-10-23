@@ -45,18 +45,19 @@ export const AddItemPage = () => {
     */
     if (duplicatedProduct === undefined) {
       addProduct(formState)
-        .then((res) => console.log(res))
+        .then(() => setMessage('Successfully created product'))
+        .catch(() => setMessage('There was a problem adding the product.'))
         .finally(() => {
           setIsLoading(false);
           setFormState(defaultValues);
         });
+    } else {
+      //This else runs only if there is a duplicated product
+      setMessage(
+        'It seems you have already added this product. Try another one.',
+      );
     }
     setIsLoading(false);
-    setMessage(
-      duplicatedProduct
-        ? 'It seems you have already added this product. Try another one.'
-        : 'Successfully created product!',
-    );
 
     setTimeout(() => setMessage(null), 3000);
   };
