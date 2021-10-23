@@ -1,10 +1,4 @@
 import React, { useState } from 'react';
-import { addProduct } from '../../utils/firebaseUtils';
-import {
-  useLocalStorage,
-  LOCAL_STORAGE_LIST_TOKEN,
-} from '../../hooks/useLocalStorage';
-import { useProducts } from '../../hooks/useProducts';
 
 import Button from '../../components/button';
 import Header from '../../components/title';
@@ -12,6 +6,19 @@ import ContentContainer from '../../components/content-container';
 import AddForm from '../../components/add-form';
 import Navigation from '../../components/routing/Navigation';
 
+//Utils
+import { addProduct } from '../../utils/firebaseUtils';
+import { normalizer } from '../../utils/normalizer';
+import { checkProduct } from '../../utils/checkProduct';
+
+//Hooks
+import {
+  useLocalStorage,
+  LOCAL_STORAGE_LIST_TOKEN,
+} from '../../hooks/useLocalStorage';
+import { useProducts } from '../../hooks/useProducts';
+
+//Styles
 import './styles.css';
 
 export const AddItemPage = () => {
@@ -19,7 +26,6 @@ export const AddItemPage = () => {
   const { products } = useProducts();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
-  const [error, setError] = useState(false);
 
   const defaultValues = {
     productName: '',
@@ -34,22 +40,33 @@ export const AddItemPage = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    addProduct(formState)
-      .then((res) => console.log(res))
-      .catch(() => setError(true))
-      .finally(() => {
-        setIsLoading(false);
+    /*
+    Checks the state if the product already exists
+    Find returns undefined if it has not matches
+    */
+    const normalizedInput = normalizer(formState.productName);
+    const duplicatedProduct = checkProduct(products, normalizedInput);
+    /*
+    We have to compare explicitely if it is undefined, otherwise
+    it wouldn't work as expected
+    */
+    if (duplicatedProduct === undefined) {
+      addProduct(formState)
+        .then(() => setMessage('Successfully created product'))
+        .catch(() => setMessage('There was a problem adding the product.'))
+        .finally(() => {
+          setIsLoading(false);
+          setFormState(defaultValues);
+        });
+    } else {
+      //This else runs only if there is a duplicated product
+      setMessage(
+        'It seems you have already added this product. Try another one.',
+      );
+    }
+    setIsLoading(false);
 
-        setFormState(defaultValues);
-
-        setMessage(
-          error
-            ? 'Unable to add product. Please, try again.'
-            : 'Successfully created product!',
-        );
-
-        setTimeout(() => setMessage(null), 3000);
-      });
+    setTimeout(() => setMessage(null), 3000);
   };
 
   const handleForm = (event) => {
