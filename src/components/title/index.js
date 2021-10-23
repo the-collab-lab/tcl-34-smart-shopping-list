@@ -1,3 +1,7 @@
-const Title = ({ children }) => <h1 className="fixed title">{children}</h1>;
+import './styles.css';
 
-export default Title;
+const Header = ({ children, className = '' }) => (
+  <h1 className={`fixed ${className}`}>{children}</h1>
+);
+
+export default Header;

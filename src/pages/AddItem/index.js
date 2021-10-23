@@ -1,21 +1,34 @@
 import React, { useState } from 'react';
+import { addProduct } from '../../utils/firebaseUtils';
+import {
+  useLocalStorage,
+  LOCAL_STORAGE_LIST_TOKEN,
+} from '../../hooks/useLocalStorage';
+import { useProducts } from '../../hooks/useProducts';
+
 import Button from '../../components/button';
-import Title from '../../components/title';
+import Header from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import AddForm from '../../components/add-form';
 import Navigation from '../../components/routing/Navigation';
-import { addProduct } from '../../utils/firebaseUtils';
+
 import './styles.css';
 
 export const AddItemPage = () => {
+  const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
+  const { products } = useProducts();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(false);
-  const [formState, setFormState] = useState({
+
+  const defaultValues = {
     productName: '',
     timeFrame: '7',
     lastPurchaseDate: null,
-  });
+    listToken: storedValue,
+  };
+
+  const [formState, setFormState] = useState(defaultValues);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -27,11 +40,7 @@ export const AddItemPage = () => {
       .finally(() => {
         setIsLoading(false);
 
-        setFormState({
-          productName: '',
-          timeFrame: '7',
-          lastPurchaseDate: null,
-        });
+        setFormState(defaultValues);
 
         setMessage(
           error
@@ -53,7 +62,7 @@ export const AddItemPage = () => {
 
   return (
     <>
-      <Title>Add Item</Title>
+      <Header className="page-header">Add Item</Header>
       <ContentContainer>
         <form onSubmit={onSubmit} className="add-form">
           <AddForm handleForm={handleForm} formState={formState} />
@@ -65,7 +74,7 @@ export const AddItemPage = () => {
         {isLoading ? <p>Adding product...</p> : null}
         {message ? <p>{message}</p> : null}
       </ContentContainer>
-      <Navigation />
+      <Navigation disableList={products.length === 0} />
     </>
   );
 };

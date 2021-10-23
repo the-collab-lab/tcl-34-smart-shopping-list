@@ -1,9 +1,14 @@
 import { useState } from 'react';
 
-export function useLocalStorage(key, initialValue) {
+export const LOCAL_STORAGE_LIST_TOKEN = 'LIST_TOKEN_V1';
+
+export function useLocalStorage(
+  localStorageField = LOCAL_STORAGE_LIST_TOKEN,
+  initialValue = '',
+) {
   const [storedValue, setStoredValue] = useState(() => {
     try {
-      const item = window.localStorage.getItem(key);
+      const item = window.localStorage.getItem(localStorageField);
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
       console.error(error);
@@ -13,7 +18,7 @@ export function useLocalStorage(key, initialValue) {
   const setValue = (value) => {
     try {
       setStoredValue(value);
-      window.localStorage.setItem(key, JSON.stringify(value));
+      window.localStorage.setItem(localStorageField, JSON.stringify(value));
     } catch (error) {
       console.error(error);
     }
