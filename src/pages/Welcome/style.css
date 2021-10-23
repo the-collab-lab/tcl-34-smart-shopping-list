@@ -1,0 +1,18 @@
+.welcome-form {
+  width: 250px;
+  text-align: left;
+  margin-top: 50px;
+}
+
+.welcome-text {
+  margin: 40px 0;
+}
+
+.welcome-header {
+  position: relative;
+  top: unset;
+}
+
+.center {
+  text-align: center;
+}

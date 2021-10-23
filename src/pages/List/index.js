@@ -1,15 +1,45 @@
 import React from 'react';
-import ItemsList from '../../components/items-list';
-import Title from '../../components/title';
+import { useHistory } from 'react-router-dom';
+import Header from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import Navigation from '../../components/routing/Navigation';
+import Button from '../../components/button';
+import { useProducts } from '../../hooks/useProducts';
 
-export const ListPage = () => (
-  <>
-    <Title>List</Title>
-    <ContentContainer>
-      <ItemsList />
-    </ContentContainer>
-    <Navigation />
-  </>
-);
+export const ListPage = () => {
+  const { products, loading, error } = useProducts();
+  const { push } = useHistory();
+
+  const showProducts = () => (
+    <ul>
+      {products.map(({ id, productName }) => (
+        <li key={id}>{productName}</li>
+      ))}
+    </ul>
+  );
+
+  if (loading) {
+    return (
+      <ContentContainer>
+        <p>Loading...</p>
+      </ContentContainer>
+    );
+  }
+
+  if (error || products.length === 0) {
+    return (
+      <ContentContainer>
+        <p style={{ marginBottom: '20px' }}>There was an error</p>
+        <Button onClick={() => push('/')}>Try again</Button>
+      </ContentContainer>
+    );
+  }
+
+  return (
+    <>
+      <Header className="page-header">List</Header>
+      <ContentContainer>{showProducts()}</ContentContainer>
+      <Navigation />
+    </>
+  );
+};
