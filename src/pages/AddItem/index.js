@@ -5,8 +5,6 @@ import Header from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import AddForm from '../../components/add-form';
 import Navigation from '../../components/routing/Navigation';
-import { addProduct } from '../../utils/firebaseUtils';
-
 
 //Utils
 import { addProduct } from '../../utils/firebaseUtils';
