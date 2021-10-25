@@ -1,5 +1,14 @@
+// In this file we add the functions that access Firebase (get, add, update)
+
+import {
+  addDoc,
+  collection,
+  updateDoc,
+  doc,
+  serverTimestamp,
+  getDocs,
+} from '@firebase/firestore';
 import { db } from '../lib/firebase';
-import { addDoc, collection, getDocs } from '@firebase/firestore';
 
 export const addProduct = ({
   productName,
@@ -11,8 +20,16 @@ export const addProduct = ({
     productName,
     timeFrame,
     lastPurchaseDate,
-    date: Date.now(),
+    createdAt: serverTimestamp(),
   });
+
+export const updatePurchaseDate = (productID, listToken) => {
+  const productRef = doc(db, listToken, productID);
+
+  return updateDoc(productRef, {
+    lastPurchaseDate: serverTimestamp(),
+  });
+};
 
 /** created to validate the token in join-list and display the message
  * when the token does not exist in /welcome */
