@@ -36,7 +36,7 @@ export const useProducts = () => {
       // Stop listening to changes from Firebase
       unsubscribe();
     };
-  }, []);
+  }, [storedValue]);
 
   return { products, loading, error };
 };
