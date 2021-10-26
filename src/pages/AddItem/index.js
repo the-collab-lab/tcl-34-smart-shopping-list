@@ -91,7 +91,7 @@ export const AddItemPage = () => {
         {isLoading ? <p>Adding product...</p> : null}
         {message ? <p>{message}</p> : null}
       </ContentContainer>
-      <Navigation disableList={products.length === 0} />
+      <Navigation />
     </>
   );
 };
