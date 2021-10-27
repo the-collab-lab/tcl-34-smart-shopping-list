@@ -14,6 +14,9 @@ export const addProduct = ({
     date: Date.now(),
   });
 
+/** created to validate the token in join-list and display the message
+ * when the token does not exist in /welcome */
+
 export const isTokenValid = async (token = '') => {
   if (token.length === 0) return false;
   const productsCol = collection(db, token);
