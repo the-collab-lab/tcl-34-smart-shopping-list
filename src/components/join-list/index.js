@@ -4,17 +4,34 @@ import {
   useLocalStorage,
   LOCAL_STORAGE_LIST_TOKEN,
 } from '../../hooks/useLocalStorage';
+import { isTokenValid } from '../../utils/firebaseUtils';
 import Button from '../button';
 
 export const JoinList = () => {
+  const [listToken, setListToken] = useState('');
+  const [checkingToken, setCheckingToken] = useState(false);
+  const [errorAuth, setErrorAuth] = useState(false);
   const history = useHistory();
   const { setValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
-  const [listToken, setListToken] = useState('');
 
-  const retrieveList = (e) => {
+  const handleTokenChange = (e) => {
+    setListToken(e.target.value);
+    setErrorAuth(false);
+  };
+
+  const retrieveList = async (e) => {
     e.preventDefault();
-    setValue(listToken);
-    history.push('/list');
+    setCheckingToken(true);
+    const isValid = await isTokenValid(listToken);
+    setCheckingToken(true);
+
+    if (isValid) {
+      setValue(listToken);
+      history.push('/list');
+    } else {
+      setListToken('');
+      setErrorAuth(true);
+    }
   };
 
   return (
@@ -28,7 +45,7 @@ export const JoinList = () => {
           type="text"
           placeholder="Token"
           value={listToken}
-          onChange={(event) => setListToken(event.target.value)}
+          onChange={handleTokenChange}
           style={{ marginTop: '8px' }}
           required
         />
@@ -37,6 +54,12 @@ export const JoinList = () => {
       <Button type="submit" className="welcome-button link">
         Join an existing list
       </Button>
+      {checkingToken ? <p>Checking token...</p> : null}
+      {errorAuth ? (
+        <p className="errorAuth">
+          Token invalid, try again or create a new list !
+        </p>
+      ) : null}
     </form>
   );
 };

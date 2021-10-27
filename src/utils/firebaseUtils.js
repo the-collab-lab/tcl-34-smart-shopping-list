@@ -1,5 +1,5 @@
 import { db } from '../lib/firebase';
-import { addDoc, collection } from '@firebase/firestore';
+import { addDoc, collection, getDocs } from '@firebase/firestore';
 
 export const addProduct = ({
   productName,
@@ -13,3 +13,10 @@ export const addProduct = ({
     lastPurchaseDate,
     date: Date.now(),
   });
+
+export const isTokenValid = async (token = '') => {
+  if (token.length === 0) return false;
+  const productsCol = collection(db, token);
+  const productSnapshot = await getDocs(productsCol);
+  return !productSnapshot.empty;
+};
