@@ -15,6 +15,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.errorAuth {
+  color: red;
+}
+
 ul {
   list-style: none;
 }

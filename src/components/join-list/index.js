@@ -55,7 +55,11 @@ export const JoinList = () => {
         Join an existing list
       </Button>
       {checkingToken ? <p>Checking token...</p> : null}
-      {errorAuth ? <p>Token invalid!</p> : null}
+      {errorAuth ? (
+        <p className="errorAuth">
+          Token invalid, try again or create a new list !
+        </p>
+      ) : null}
     </form>
   );
 };
