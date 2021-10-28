@@ -5,6 +5,13 @@ false IF it has passed more than 1 day
 */
 export const compareDates = (date) => {
   const today = new Date();
-  const diff = (date.getTime() - today.getTime()) / (1000 * 60 * 60);
-  return Math.abs(Math.round(diff)) <= 24 ? true : false;
+  /*1000 = 1 second
+    60=1min
+    60=1h
+    We're taking the difference betweent two dates in milliseconds
+    given by the getTime() method and transform it to hours.
+  */
+  const millisecondsDifference =
+    (date.getTime() - today.getTime()) / (1000 * 60 * 60);
+  return Math.abs(Math.round(millisecondsDifference)) <= 24 ? true : false;
 };
