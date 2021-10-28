@@ -20,13 +20,10 @@ function CustomLink({ children, to, disable }) {
   );
 }
 
-function Navigation({ disableList = false }) {
+function Navigation() {
   return (
     <nav className="fixed navigation">
-      <CustomLink to="/list" disable={disableList}>
-        {' '}
-        List{' '}
-      </CustomLink>
+      <CustomLink to="/list"> List </CustomLink>
       <CustomLink to="/addItem"> Add Item </CustomLink>
     </nav>
   );

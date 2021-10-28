@@ -23,7 +23,7 @@ export const JoinList = () => {
     e.preventDefault();
     setCheckingToken(true);
     const isValid = await isTokenValid(listToken);
-    setCheckingToken(true);
+    setCheckingToken(false);
 
     if (isValid) {
       setValue(listToken);
