@@ -1,5 +1,4 @@
 // In this file we add the functions that access Firebase (get, add, update)
-
 import {
   addDoc,
   collection,
