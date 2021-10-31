@@ -67,3 +67,8 @@ ul {
   background-color: #6383ec;
   color: white;
 }
+
+/** component join-list **/
+.errorAuth {
+  color: red;
+}
