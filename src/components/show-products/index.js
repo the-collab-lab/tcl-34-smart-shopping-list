@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import Button from '../button';
 import { useProducts } from '../../hooks/useProducts';
 import ContentContainer from '../content-container';
+import './styles.css';
 
 export const ShowProducts = () => {
   const { products, loading } = useProducts();
@@ -19,7 +20,7 @@ export const ShowProducts = () => {
   if (products.length === 0) {
     return (
       <ContentContainer>
-        <p style={{ marginBottom: '20px' }}>
+        <p className="empty-shopping-list">
           Your shopping list is currently empty.
         </p>
         <Button onClick={() => push('/addItem')}>Add Item</Button>
