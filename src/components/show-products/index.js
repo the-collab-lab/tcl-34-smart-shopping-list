@@ -29,7 +29,6 @@ export const ShowProducts = () => {
 
   const handleOnChange = (e, productID) => {
     updatePurchaseDate(productID, storedValue);
-    
     let date = new Date();
     const item = parseData.find((element) => element.productID === productID);
     const daysSinceLastTransaction = item.lastPurchasedDate
@@ -42,10 +41,6 @@ export const ShowProducts = () => {
         itemRef,
         {
           lastPurchasedDate: date.getTime(),
-          //pull the data from the database before running calculateEstimate
-          estimatedPurchaseDate: calculateEstimate(),
-          //increment by one
-          // totalPurchases: totalPurchases++
           estimatedPurchaseDate: calculateEstimate(
             item.estimatedPurchaseDate,
             daysSinceLastTransaction,
@@ -57,7 +52,6 @@ export const ShowProducts = () => {
       );
     } else {
       const itemRef = doc(db, 'listToken', productID);
-      setDoc(itemRef, { lastPurchasedDate: null }, { merge: true });
       setDoc(
         itemRef,
         { lastPurchasedDate: null, totalPurchases: item.totalPurchases - 1 },
