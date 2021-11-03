@@ -13,12 +13,16 @@ export const addProduct = ({
   productName,
   timeFrame,
   lastPurchaseDate,
+  daysUntilNextPurchase,
+  numberOfPurchases,
   listToken,
 }) =>
   addDoc(collection(db, listToken), {
     productName,
     timeFrame,
     lastPurchaseDate,
+    daysUntilNextPurchase,
+    numberOfPurchases,
     createdAt: serverTimestamp(),
   });
 
