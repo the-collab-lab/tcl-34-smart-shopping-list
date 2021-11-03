@@ -72,9 +72,10 @@ export const ShowProducts = () => {
           Filter items
           <input
             className="input-item"
+            type="search"
             id="filter"
-            name="filter"
-            type="text"
+            name="q"
+            aria-label="Search through list content"
             placeholder="Start typing here..."
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
