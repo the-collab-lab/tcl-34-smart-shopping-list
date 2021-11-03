@@ -41,12 +41,12 @@ export const ShowProducts = () => {
         itemRef,
         {
           lastPurchasedDate: date.getTime(),
-          estimatedPurchaseDate: calculateEstimate(
-            item.estimatedPurchaseDate,
+          daysUntilNextPurchase: calculateEstimate(
+            item.daysUntilNextPurchase,
             daysSinceLastTransaction,
-            item.totalPurchases,
+            item.numberOfPurchases,
           ),
-          totalPurchases: item.totalPurchases + 1,
+          numberOfPurchases: item.numberOfPurchases + 1,
         },
         { merge: true },
       );
@@ -54,10 +54,10 @@ export const ShowProducts = () => {
       const itemRef = doc(db, 'listToken', productID);
       setDoc(
         itemRef,
-        { lastPurchasedDate: null, totalPurchases: item.totalPurchases - 1 },
+        { lastPurchasedDate: null, numberOfPurchases: item.numberOfPurchases - 1 },
         { merge: true },
       );
-    }
+    };
 
   };
 
