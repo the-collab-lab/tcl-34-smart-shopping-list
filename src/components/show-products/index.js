@@ -74,7 +74,7 @@ export const ShowProducts = () => {
             className="input-item"
             type="search"
             id="filter"
-            name="q"
+            name="filter"
             aria-label="Search through list content"
             placeholder="Start typing here..."
             value={searchTerm}
@@ -83,26 +83,30 @@ export const ShowProducts = () => {
         </label>
       </form>
       <ul>
-        {list.map(({ id, productName, lastPurchaseDate, timeFrame }) => (
-          <li className="checkbox-item" key={id}>
-            <label htmlFor={id} className="checkbox-label">
-              <input
-                type="checkbox"
-                id={id}
-                name={productName}
-                onChange={() => handleCheckboxChange(id)}
-                checked={
-                  lastPurchaseDate && compareDates(lastPurchaseDate.toDate())
-                }
-                aria-label={TimeFrames[timeFrame]}
-              />
-              <span
-                className={`checkmark checkbox-timeFrame-${timeFrame}`}
-              ></span>
-              <span className="checkbox-name">{productName}</span>
-            </label>
-          </li>
-        ))}
+        {list.length > 0 ? (
+          list.map(({ id, productName, lastPurchaseDate, timeFrame }) => (
+            <li className="checkbox-item" key={id}>
+              <label htmlFor={id} className="checkbox-label">
+                <input
+                  type="checkbox"
+                  id={id}
+                  name={productName}
+                  onChange={() => handleCheckboxChange(id)}
+                  checked={
+                    lastPurchaseDate && compareDates(lastPurchaseDate.toDate())
+                  }
+                  aria-label={TimeFrames[timeFrame]}
+                />
+                <span
+                  className={`checkmark checkbox-timeFrame-${timeFrame}`}
+                ></span>
+                <span className="checkbox-name">{productName}</span>
+              </label>
+            </li>
+          ))
+        ) : (
+          <p className="empty-shopping-list">Product not found.</p>
+        )}
       </ul>
     </ContentContainer>
   );
