@@ -29,7 +29,7 @@ export const ShowProducts = () => {
     const daysSinceLastTransaction =
       item.createdAt.toDate() !== 0 ? compareDates(item.createdAt.toDate()) : 0;
     const checked = e.target.checked;
-    debugger;
+
     const estimatedTime = calculateEstimate(
       parseInt(item.timeFrame),
       daysSinceLastTransaction,
