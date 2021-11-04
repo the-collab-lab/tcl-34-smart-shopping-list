@@ -32,7 +32,7 @@ export const ShowProducts = () => {
         )
       : 0;
     const checked = e.target.checked;
-    debugger;
+
     const calcu = calculateEstimate(
       parseInt(item.timeFrame),
       daysSinceLastTransaction,
