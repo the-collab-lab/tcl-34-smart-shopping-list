@@ -11,13 +11,9 @@ import {
 import { TimeFrames } from '../../utils/timeFrames';
 import { compareDates } from '../../utils/compareDates';
 import ContentContainer from '../content-container';
-import {
-  doc,
-  setDoc,
-} from '@firebase/firestore';
+import { doc, setDoc, serverTimestamp } from '@firebase/firestore';
 import { db } from '../../lib/firebase';
 
-import { parseData } from '../../helpers/firebaseHelpers';
 import './styles.css';
 
 export const ShowProducts = () => {
@@ -29,18 +25,25 @@ export const ShowProducts = () => {
 
   const handleOnChange = (e, productID) => {
     updatePurchaseDate(productID, storedValue);
-    let date = new Date();
-    const item = parseData.find((element) => element.productID === productID);
-    const daysSinceLastTransaction = item.lastPurchasedDate
-      ? Math.round((new Date() - item.lastPurchasedDate) / 1000 / 60 / 60 / 24)
+    const item = products?.find((product) => product.id === productID);
+    const daysSinceLastTransaction = item.lastPurchaseDate
+      ? Math.round(
+          (new Date() - item.lastPurchaseDate.toDate()) / 1000 / 60 / 60 / 24,
+        )
       : 0;
     const checked = e.target.checked;
+    debugger;
+    const calcu = calculateEstimate(
+      parseInt(item.timeFrame),
+      daysSinceLastTransaction,
+      item.numberOfPurchases,
+    );
     if (checked) {
-      const itemRef = doc(db, 'listToken', productID);
+      const itemRef = doc(db, storedValue, productID);
       setDoc(
         itemRef,
         {
-          lastPurchasedDate: date.getTime(),
+          lastPurchaseDate: serverTimestamp(),
           daysUntilNextPurchase: calculateEstimate(
             item.daysUntilNextPurchase,
             daysSinceLastTransaction,
@@ -51,14 +54,16 @@ export const ShowProducts = () => {
         { merge: true },
       );
     } else {
-      const itemRef = doc(db, 'listToken', productID);
+      const itemRef = doc(db, storedValue, productID);
       setDoc(
         itemRef,
-        { lastPurchasedDate: null, numberOfPurchases: item.numberOfPurchases - 1 },
+        {
+          lastPurchaseDate: null,
+          numberOfPurchases: item.numberOfPurchases - 1,
+        },
         { merge: true },
       );
-    };
-
+    }
   };
 
   if (loading) {
@@ -90,10 +95,11 @@ export const ShowProducts = () => {
                 type="checkbox"
                 id={id}
                 name={productName}
-                onChange={() => handleOnChange(id)}
+                onChange={(event) => handleOnChange(event, id)}
                 checked={
                   lastPurchaseDate &&
-                  new Date() - item.lastPurchasedDate < ONE_MINUTE && compareDates(lastPurchaseDate.toDate())
+                  new Date() - lastPurchaseDate < ONE_MINUTE &&
+                  compareDates(lastPurchaseDate.toDate())
                 }
                 ariaLabel={timeFrames[timeFrame]}
               />
