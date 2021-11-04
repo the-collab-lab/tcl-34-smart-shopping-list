@@ -4,11 +4,11 @@ export const parseData = (querySnapshot) =>
   querySnapshot.docs.reduce((acc, doc) => {
     const {
       productName,
-      listToken,
       timeFrame,
       lastPurchaseDate,
       daysUntilNextPurchase,
       numberOfPurchases,
+      createdAt,
     } = doc.data();
 
     return [
@@ -16,11 +16,11 @@ export const parseData = (querySnapshot) =>
       {
         id: doc.id,
         productName,
-        listToken,
         timeFrame,
         lastPurchaseDate,
         daysUntilNextPurchase,
         numberOfPurchases,
+        createdAt,
       },
     ];
   }, []);
