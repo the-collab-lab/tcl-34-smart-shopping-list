@@ -21,19 +21,16 @@ export const ShowProducts = () => {
   const { push } = useHistory();
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
   const timeFrames = TimeFrames;
-  const ONE_MINUTE = 10 * 1000;
+  const ONE_DAY = 1;
 
   const handleOnChange = (e, productID) => {
     updatePurchaseDate(productID, storedValue);
     const item = products?.find((product) => product.id === productID);
-    const daysSinceLastTransaction = item.lastPurchaseDate
-      ? Math.round(
-          (new Date() - item.lastPurchaseDate.toDate()) / 1000 / 60 / 60 / 24,
-        )
-      : 0;
+    const daysSinceLastTransaction =
+      item.createdAt.toDate() !== 0 ? compareDates(item.createdAt.toDate()) : 0;
     const checked = e.target.checked;
-
-    const calcu = calculateEstimate(
+    debugger;
+    const estimatedTime = calculateEstimate(
       parseInt(item.timeFrame),
       daysSinceLastTransaction,
       item.numberOfPurchases,
@@ -44,11 +41,7 @@ export const ShowProducts = () => {
         itemRef,
         {
           lastPurchaseDate: serverTimestamp(),
-          daysUntilNextPurchase: calculateEstimate(
-            item.daysUntilNextPurchase,
-            daysSinceLastTransaction,
-            item.numberOfPurchases,
-          ),
+          daysUntilNextPurchase: estimatedTime,
           numberOfPurchases: item.numberOfPurchases + 1,
         },
         { merge: true },
@@ -98,10 +91,9 @@ export const ShowProducts = () => {
                 onChange={(event) => handleOnChange(event, id)}
                 checked={
                   lastPurchaseDate &&
-                  new Date() - lastPurchaseDate < ONE_MINUTE &&
-                  compareDates(lastPurchaseDate.toDate())
+                  compareDates(lastPurchaseDate.toDate()) < ONE_DAY
                 }
-                ariaLabel={timeFrames[timeFrame]}
+                aria-label={timeFrames[timeFrame]}
               />
               <span
                 className={`checkmark checkbox-timeFrame-${timeFrame}`}
