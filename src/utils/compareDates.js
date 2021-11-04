@@ -1,17 +1,21 @@
+const MS_TO_SEC = 1000;
+const SEC_TO_MIN = 60;
+const MIN_TO_HR = 60;
+const HR_TO_DAY = 24;
+
+const MS_TO_DAY = MS_TO_SEC * SEC_TO_MIN * MIN_TO_HR * HR_TO_DAY;
+
 /*
 This function receives a Date JS Object and returns 
-true IF it has not passed more than one day, otherwise returns
-false IF it has passed more than 1 day
+an absolute rounded number indicating the difference
+between those two dates in days.
 */
 export const compareDates = (date) => {
   const today = new Date();
-  /*1000 = 1 second
-    60=1min
-    60=1h
-    We're taking the difference betweent two dates in milliseconds
-    given by the getTime() method and transform it to hours.
+  /*
+    We're taking the difference between two dates in milliseconds
+    given by the getTime() method and transform it to days.
   */
-  const millisecondsDifference =
-    (date.getTime() - today.getTime()) / (1000 * 60 * 60);
-  return Math.abs(Math.round(millisecondsDifference)) <= 24 ? true : false;
+  const millisecondsDifference = (date.getTime() - today.getTime()) / MS_TO_DAY;
+  return Math.abs(Math.round(millisecondsDifference));
 };
