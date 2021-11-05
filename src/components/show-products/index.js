@@ -1,18 +1,22 @@
-import React from 'react';
+import { doc, setDoc, serverTimestamp } from '@firebase/firestore';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import { useHistory } from 'react-router';
-import Button from '../button';
-import { updatePurchaseDate } from '../../utils/firebaseUtils';
+import { db } from '../../lib/firebase';
+
+//Hooks
 import { useProducts } from '../../hooks/useProducts';
 import {
   useLocalStorage,
   LOCAL_STORAGE_LIST_TOKEN,
 } from '../../hooks/useLocalStorage';
+
+//Utils
+import { updatePurchaseDate } from '../../utils/firebaseUtils';
 import { TimeFrames } from '../../utils/timeFrames';
 import { compareDates, ONE_DAY } from '../../utils/compareDates';
+import { findProductById } from '../../utils/findProductById';
 import ContentContainer from '../content-container';
-import { doc, setDoc, serverTimestamp } from '@firebase/firestore';
-import { db } from '../../lib/firebase';
+import Button from '../button';
 
 import './styles.css';
 
@@ -25,7 +29,8 @@ export const ShowProducts = () => {
 
   const handleOnChange = (event, productID) => {
     updatePurchaseDate(productID, storedValue);
-    const item = products?.find((product) => product.id === productID);
+
+    const item = findProductById(products, productID);
     const daysSinceLastTransaction =
       item.createdAt.toDate() !== 0 ? compareDates(item.createdAt.toDate()) : 0;
     const checked = event.target.checked;
