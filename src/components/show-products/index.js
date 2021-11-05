@@ -13,7 +13,10 @@ import {
 //Utils
 import { updatePurchaseDate } from '../../utils/firebaseUtils';
 import { TimeFrames } from '../../utils/timeFrames';
-import { compareDates, ONE_DAY } from '../../utils/compareDates';
+import {
+  diffBetweenTodayAndDate,
+  ONE_DAY,
+} from '../../utils/diffBetweenTodayAndDate';
 import { findProductById } from '../../utils/findProductById';
 import ContentContainer from '../content-container';
 import Button from '../button';
@@ -32,7 +35,9 @@ export const ShowProducts = () => {
 
     const item = findProductById(products, productID);
     const daysSinceLastTransaction =
-      item.createdAt.toDate() !== 0 ? compareDates(item.createdAt.toDate()) : 0;
+      item.createdAt.toDate() !== 0
+        ? diffBetweenTodayAndDate(item.createdAt.toDate())
+        : 0;
     const checked = event.target.checked;
 
     const estimatedTime = calculateEstimate(
@@ -96,7 +101,7 @@ export const ShowProducts = () => {
                 onChange={(event) => handleOnChange(event, id)}
                 checked={
                   lastPurchaseDate &&
-                  compareDates(lastPurchaseDate.toDate()) < ONE_DAY
+                  diffBetweenTodayAndDate(lastPurchaseDate.toDate()) < ONE_DAY
                 }
                 aria-label={timeFrames[timeFrame]}
               />

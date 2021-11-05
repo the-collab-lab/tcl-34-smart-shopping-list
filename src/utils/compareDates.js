@@ -10,7 +10,7 @@ This function receives a Date JS Object and returns
 an absolute rounded number indicating the difference
 between those two dates in days.
 */
-export const compareDates = (date) => {
+export const diffBetweenTodayAndDate = (date) => {
   const today = new Date();
   /*
     We're taking the difference between two dates in milliseconds
