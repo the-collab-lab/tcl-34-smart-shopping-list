@@ -20,13 +20,15 @@ export const ShowProducts = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [list, setList] = useState([]);
 
-  useEffect(() => {
-    setList(getFilteredResults(searchTerm, products));
-  }, [searchTerm, products]);
-
   const handleCheckboxChange = (productID) => {
     updatePurchaseDate(productID, storedValue);
   };
+
+  const deleteSerachTerm = () => setSearchTerm('');
+
+  useEffect(() => {
+    setList(getFilteredResults(searchTerm, products));
+  }, [searchTerm, products]);
 
   if (loading) {
     return (
@@ -53,7 +55,7 @@ export const ShowProducts = () => {
         <label htmlFor="filter">
           Filter items
           <input
-            className="input-item"
+            className="search-item"
             type="search"
             id="filter"
             name="filter"
@@ -63,6 +65,14 @@ export const ShowProducts = () => {
             onChange={(event) => setSearchTerm(event.target.value)}
           />
         </label>
+        {searchTerm && (
+          <input
+            class="close-icon"
+            onClick={deleteSerachTerm}
+            type="reset"
+            value="X"
+          />
+        )}
       </form>
 
       {list.length > 0 ? (
