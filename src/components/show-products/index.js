@@ -23,12 +23,12 @@ export const ShowProducts = () => {
   const timeFrames = TimeFrames;
   const ONE_DAY = 1;
 
-  const handleOnChange = (e, productID) => {
+  const handleOnChange = (event, productID) => {
     updatePurchaseDate(productID, storedValue);
     const item = products?.find((product) => product.id === productID);
     const daysSinceLastTransaction =
       item.createdAt.toDate() !== 0 ? compareDates(item.createdAt.toDate()) : 0;
-    const checked = e.target.checked;
+    const checked = event.target.checked;
 
     const estimatedTime = calculateEstimate(
       parseInt(item.timeFrame),
