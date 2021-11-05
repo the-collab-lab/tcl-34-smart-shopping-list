@@ -9,7 +9,7 @@ import {
   LOCAL_STORAGE_LIST_TOKEN,
 } from '../../hooks/useLocalStorage';
 import { TimeFrames } from '../../utils/timeFrames';
-import { compareDates } from '../../utils/compareDates';
+import { compareDates, ONE_DAY } from '../../utils/compareDates';
 import ContentContainer from '../content-container';
 import { doc, setDoc, serverTimestamp } from '@firebase/firestore';
 import { db } from '../../lib/firebase';
@@ -21,7 +21,7 @@ export const ShowProducts = () => {
   const { push } = useHistory();
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
   const timeFrames = TimeFrames;
-  const ONE_DAY = 1;
+  const ONE_DAY = ONE_DAY;
 
   const handleOnChange = (event, productID) => {
     updatePurchaseDate(productID, storedValue);

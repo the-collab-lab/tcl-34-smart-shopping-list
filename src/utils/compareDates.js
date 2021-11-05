@@ -19,3 +19,5 @@ export const compareDates = (date) => {
   const millisecondsDifference = (date.getTime() - today.getTime()) / MS_TO_DAY;
   return Math.abs(Math.round(millisecondsDifference));
 };
+
+export const ONE_DAY = 1;
