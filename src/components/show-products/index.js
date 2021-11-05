@@ -9,6 +9,7 @@ import {
 } from '../../hooks/useLocalStorage';
 import { TimeFrames } from '../../utils/timeFrames';
 import { compareDates } from '../../utils/compareDates';
+import { getFilteredResults } from '../../utils/getFilteredResults';
 import ContentContainer from '../content-container';
 import './styles.css';
 
@@ -20,26 +21,7 @@ export const ShowProducts = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    let results = products;
-
-    if (searchTerm !== '') {
-      results = products.filter(({ productName }) =>
-        productName
-          .toLowerCase()
-          .replace(/\s/g, '')
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .includes(
-            searchTerm
-              .toLowerCase()
-              .replace(/\s/g, '')
-              .normalize('NFD')
-              .replace(/[\u0300-\u036f]/g, ''),
-          ),
-      );
-    }
-
-    setList(results);
+    setList(getFilteredResults(searchTerm, products));
   }, [searchTerm, products]);
 
   const handleCheckboxChange = (productID) => {
@@ -75,16 +57,17 @@ export const ShowProducts = () => {
             type="search"
             id="filter"
             name="filter"
-            aria-label="Search through list content"
+            aria-label="Search through list content."
             placeholder="Start typing here..."
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
           />
         </label>
       </form>
-      <ul>
-        {list.length > 0 ? (
-          list.map(({ id, productName, lastPurchaseDate, timeFrame }) => (
+
+      {list.length > 0 ? (
+        <ul>
+          {list.map(({ id, productName, lastPurchaseDate, timeFrame }) => (
             <li className="checkbox-item" key={id}>
               <label htmlFor={id} className="checkbox-label">
                 <input
@@ -103,11 +86,11 @@ export const ShowProducts = () => {
                 <span className="checkbox-name">{productName}</span>
               </label>
             </li>
-          ))
-        ) : (
-          <p className="empty-shopping-list">Product not found.</p>
-        )}
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm}'`}</p>
+      )}
     </ContentContainer>
   );
 };
