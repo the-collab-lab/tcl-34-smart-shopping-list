@@ -24,7 +24,7 @@ export const ShowProducts = () => {
     updatePurchaseDate(productID, storedValue);
   };
 
-  const deleteSerachTerm = () => setSearchTerm('');
+  const deleteSearchTerm = () => setSearchTerm('');
 
   useEffect(() => {
     setList(getFilteredResults(searchTerm, products));
@@ -56,7 +56,7 @@ export const ShowProducts = () => {
           Filter items
           <input
             className="search-item"
-            type="search"
+            type="text"
             id="filter"
             name="filter"
             aria-label="Search through list content."
@@ -68,9 +68,10 @@ export const ShowProducts = () => {
         {searchTerm && (
           <input
             className="close-icon"
-            onClick={deleteSerachTerm}
+            onClick={deleteSearchTerm}
             type="reset"
             value="X"
+            aria-label="This button clears the content of the search field."
           />
         )}
       </form>
