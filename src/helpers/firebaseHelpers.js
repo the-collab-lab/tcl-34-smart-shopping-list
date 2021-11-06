@@ -2,25 +2,14 @@
 
 export const parseData = (querySnapshot) =>
   querySnapshot.docs.reduce((acc, doc) => {
-    const {
-      productName,
-      timeFrame,
-      lastPurchaseDate,
-      daysUntilNextPurchase,
-      numberOfPurchases,
-      createdAt,
-    } = doc.data();
+    const { id } = doc;
+    const product = doc.data();
 
     return [
       ...acc,
       {
-        id: doc.id,
-        productName,
-        timeFrame,
-        lastPurchaseDate,
-        daysUntilNextPurchase,
-        numberOfPurchases,
-        createdAt,
+        id,
+        ...product,
       },
     ];
   }, []);
