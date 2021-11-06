@@ -17,7 +17,7 @@ import {
   diffBetweenTodayAndDate,
   ONE_DAY,
 } from '../../utils/diffBetweenTodayAndDate';
-import { daysSinceLastTransaction } from '../../utils/daysSinceLastTransaction';
+// import { daysSinceLastTransaction } from '../../utils/daysSinceLastTransaction';
 import { findProductById } from '../../utils/findProductById';
 import ContentContainer from '../content-container';
 import Button from '../button';
@@ -35,7 +35,10 @@ export const ShowProducts = () => {
     updatePurchaseDate(productID, storedValue);
 
     const item = findProductById(products, productID);
-    const days = daysSinceLastTransaction(item, diffBetweenTodayAndDate());
+    const days =
+      item.createdAt.toDate() !== 0
+        ? diffBetweenTodayAndDate(item.createdAt.toDate())
+        : 0;
 
     const checked = event.target.checked;
 
@@ -52,16 +55,6 @@ export const ShowProducts = () => {
           lastPurchaseDate: serverTimestamp(),
           daysUntilNextPurchase: estimatedTime,
           numberOfPurchases: item.numberOfPurchases + 1,
-        },
-        { merge: true },
-      );
-    } else {
-      const itemRef = doc(db, storedValue, productID);
-      setDoc(
-        itemRef,
-        {
-          lastPurchaseDate: null,
-          numberOfPurchases: item.numberOfPurchases - 1,
         },
         { merge: true },
       );
