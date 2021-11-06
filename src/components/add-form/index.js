@@ -14,7 +14,6 @@ const AddForm = ({ formState, handleForm }) => (
         placeholder="Item"
         value={formState.productName}
         onChange={(event) => handleForm(event)}
-        style={{ marginTop: '8px' }}
         required
       />
     </label>

@@ -70,3 +70,28 @@
 .checkbox-timeFrame-30 {
   background-color: #e5f5e2;
 }
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 0 auto 30px;
+  position: relative;
+}
+
+.search-item {
+  border-radius: 4px;
+  line-height: 2;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  padding: 0px 10px;
+  width: 100%;
+}
+
+.close-icon {
+  bottom: 26px;
+  background-color: transparent;
+  border: 0 solid;
+  position: absolute;
+  right: 8px;
+}

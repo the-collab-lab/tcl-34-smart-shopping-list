@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Button from '../button';
 import { updatePurchaseDate } from '../../utils/firebaseUtils';
@@ -9,6 +9,7 @@ import {
 } from '../../hooks/useLocalStorage';
 import { TimeFrames } from '../../utils/timeFrames';
 import { compareDates } from '../../utils/compareDates';
+import { getFilteredResults } from '../../utils/getFilteredResults';
 import ContentContainer from '../content-container';
 import './styles.css';
 
@@ -16,11 +17,18 @@ export const ShowProducts = () => {
   const { products, loading } = useProducts();
   const { push } = useHistory();
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
-  const timeFrames = TimeFrames;
+  const [searchTerm, setSearchTerm] = useState('');
+  const [list, setList] = useState([]);
 
-  const handleOnChange = (productID) => {
+  const handleCheckboxChange = (productID) => {
     updatePurchaseDate(productID, storedValue);
   };
+
+  const deleteSearchTerm = () => setSearchTerm('');
+
+  useEffect(() => {
+    setList(getFilteredResults(searchTerm, products));
+  }, [searchTerm, products]);
 
   if (loading) {
     return (
@@ -43,28 +51,57 @@ export const ShowProducts = () => {
 
   return (
     <ContentContainer>
-      <ul>
-        {products?.map(({ id, productName, lastPurchaseDate, timeFrame }) => (
-          <li className="checkbox-item" key={id}>
-            <label htmlFor={id} className="checkbox-label">
-              <input
-                type="checkbox"
-                id={id}
-                name={productName}
-                onChange={() => handleOnChange(id)}
-                checked={
-                  lastPurchaseDate && compareDates(lastPurchaseDate.toDate())
-                }
-                ariaLabel={timeFrames[timeFrame]}
-              />
-              <span
-                className={`checkmark checkbox-timeFrame-${timeFrame}`}
-              ></span>
-              <span className="checkbox-name">{productName}</span>
-            </label>
-          </li>
-        ))}
-      </ul>
+      <form className="filter-form">
+        <label htmlFor="filter">
+          Filter items
+          <input
+            className="search-item"
+            type="text"
+            id="filter"
+            name="filter"
+            aria-label="Search through list content."
+            placeholder="Start typing here..."
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+          />
+        </label>
+        {searchTerm && (
+          <input
+            className="close-icon"
+            onClick={deleteSearchTerm}
+            type="reset"
+            value="X"
+            aria-label="This button clears the content of the search field."
+          />
+        )}
+      </form>
+
+      {list.length > 0 ? (
+        <ul>
+          {list.map(({ id, productName, lastPurchaseDate, timeFrame }) => (
+            <li className="checkbox-item" key={id}>
+              <label htmlFor={id} className="checkbox-label">
+                <input
+                  type="checkbox"
+                  id={id}
+                  name={productName}
+                  onChange={() => handleCheckboxChange(id)}
+                  checked={
+                    lastPurchaseDate && compareDates(lastPurchaseDate.toDate())
+                  }
+                  aria-label={TimeFrames[timeFrame]}
+                />
+                <span
+                  className={`checkmark checkbox-timeFrame-${timeFrame}`}
+                ></span>
+                <span className="checkbox-name">{productName}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm}'`}</p>
+      )}
     </ContentContainer>
   );
 };
