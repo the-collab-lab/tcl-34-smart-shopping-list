@@ -28,7 +28,7 @@ export const ShowProducts = () => {
   const { push } = useHistory();
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
   const timeFrames = TimeFrames;
-  const ONE_DAY = ONE_DAY;
+  const one_day = ONE_DAY;
 
   const handleOnChange = (event, productID) => {
     updatePurchaseDate(productID, storedValue);
@@ -101,7 +101,7 @@ export const ShowProducts = () => {
                 onChange={(event) => handleOnChange(event, id)}
                 checked={
                   lastPurchaseDate &&
-                  diffBetweenTodayAndDate(lastPurchaseDate.toDate()) < ONE_DAY
+                  diffBetweenTodayAndDate(lastPurchaseDate.toDate()) < one_day
                 }
                 aria-label={timeFrames[timeFrame]}
               />
