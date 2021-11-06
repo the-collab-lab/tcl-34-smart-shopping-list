@@ -5,7 +5,7 @@ that matches the id
 The array MUST contain an id property!
 */
 
-export const findProductById = (array, productId) => {
-  const product = array?.find((item) => item.id === productId);
+export const findProductById = (array, itemId) => {
+  const product = array?.find((item) => item.id === itemId);
   return product;
 };
