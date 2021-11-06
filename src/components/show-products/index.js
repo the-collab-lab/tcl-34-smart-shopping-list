@@ -67,7 +67,7 @@ export const ShowProducts = () => {
         </label>
         {searchTerm && (
           <input
-            class="close-icon"
+            className="close-icon"
             onClick={deleteSerachTerm}
             type="reset"
             value="X"
