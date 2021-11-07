@@ -6,6 +6,5 @@ zero if there hasn't been any.
 */
 
 export const daysSinceLastTransaction = (item, callback) => {
-  debugger;
   return item.createdAt.toDate() !== 0 ? callback(item.createdAt.toDate()) : 0;
 };
