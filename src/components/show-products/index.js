@@ -17,7 +17,7 @@ import {
   diffBetweenTodayAndDate,
   ONE_DAY,
 } from '../../utils/diffBetweenTodayAndDate';
-// import { daysSinceLastTransaction } from '../../utils/daysSinceLastTransaction';
+
 import { findProductById } from '../../utils/findProductById';
 import ContentContainer from '../content-container';
 import Button from '../button';
