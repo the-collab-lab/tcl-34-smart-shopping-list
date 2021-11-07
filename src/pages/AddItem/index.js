@@ -33,6 +33,7 @@ export const AddItemPage = () => {
     lastPurchaseDate: null,
     daysUntilNextPurchase: 0,
     numberOfPurchases: 0,
+    listToken: storedValue,
   };
 
   const [formState, setFormState] = useState(defaultValues);
