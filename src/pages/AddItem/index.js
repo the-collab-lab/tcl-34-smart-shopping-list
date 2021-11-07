@@ -31,7 +31,8 @@ export const AddItemPage = () => {
     productName: '',
     timeFrame: '7',
     lastPurchaseDate: null,
-    listToken: storedValue,
+    daysUntilNextPurchase: 0,
+    numberOfPurchases: 0,
   };
 
   const [formState, setFormState] = useState(defaultValues);

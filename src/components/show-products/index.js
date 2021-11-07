@@ -1,27 +1,66 @@
-import { useState, useEffect } from 'react';
+import { doc, setDoc, serverTimestamp } from '@firebase/firestore';
+import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import { useHistory } from 'react-router';
-import Button from '../button';
-import { updatePurchaseDate } from '../../utils/firebaseUtils';
+import { db } from '../../lib/firebase';
+
+//Hooks
+import { useState, useEffect } from 'react';
 import { useProducts } from '../../hooks/useProducts';
 import {
   useLocalStorage,
   LOCAL_STORAGE_LIST_TOKEN,
 } from '../../hooks/useLocalStorage';
+
+//Utils
+import { updatePurchaseDate } from '../../utils/firebaseUtils';
 import { TimeFrames } from '../../utils/timeFrames';
-import { compareDates } from '../../utils/compareDates';
+import {
+  diffBetweenTodayAndDate,
+  ONE_DAY,
+} from '../../utils/diffBetweenTodayAndDate';
 import { getFilteredResults } from '../../utils/getFilteredResults';
+import { findProductById } from '../../utils/findProductById';
 import ContentContainer from '../content-container';
+import Button from '../button';
+
 import './styles.css';
 
 export const ShowProducts = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [list, setList] = useState([]);
   const { products, loading } = useProducts();
   const { push } = useHistory();
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [list, setList] = useState([]);
+  const one_day = ONE_DAY;
 
-  const handleCheckboxChange = (productID) => {
+  const handleCheckboxChange = (event, productID) => {
     updatePurchaseDate(productID, storedValue);
+
+    const item = findProductById(products, productID);
+    const days =
+      item.createdAt.toDate() !== 0
+        ? diffBetweenTodayAndDate(item.createdAt.toDate())
+        : 0;
+
+    const checked = event.target.checked;
+
+    const estimatedTime = calculateEstimate(
+      parseInt(item.timeFrame),
+      days,
+      item.numberOfPurchases,
+    );
+    if (checked) {
+      const itemRef = doc(db, storedValue, productID);
+      setDoc(
+        itemRef,
+        {
+          lastPurchaseDate: serverTimestamp(),
+          daysUntilNextPurchase: estimatedTime,
+          numberOfPurchases: item.numberOfPurchases + 1,
+        },
+        { merge: true },
+      );
+    }
   };
 
   const deleteSearchTerm = () => setSearchTerm('');
@@ -85,9 +124,10 @@ export const ShowProducts = () => {
                   type="checkbox"
                   id={id}
                   name={productName}
-                  onChange={() => handleCheckboxChange(id)}
+                  onChange={(event) => handleCheckboxChange(event, id)}
                   checked={
-                    lastPurchaseDate && compareDates(lastPurchaseDate.toDate())
+                    lastPurchaseDate &&
+                    diffBetweenTodayAndDate(lastPurchaseDate.toDate()) < one_day
                   }
                   aria-label={TimeFrames[timeFrame]}
                 />
