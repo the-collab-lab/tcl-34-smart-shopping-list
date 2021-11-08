@@ -12,7 +12,7 @@ import {
 } from '../../hooks/useLocalStorage';
 
 //Utils
-import { updatePurchaseDate } from '../../utils/firebaseUtils';
+import { handleDelete, updatePurchaseDate } from '../../utils/firebaseUtils';
 import { TimeFrames } from '../../utils/timeFrames';
 import {
   diffBetweenTodayAndDate,
@@ -135,6 +135,12 @@ export const ShowProducts = () => {
                   className={`checkmark checkbox-timeFrame-${timeFrame}`}
                 ></span>
                 <span className="checkbox-name">{productName}</span>
+                <button
+                  className="button-delete"
+                  onClick={() => handleDelete(id)}
+                >
+                  Delete
+                </button>
               </label>
             </li>
           ))}

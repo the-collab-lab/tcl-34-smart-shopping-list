@@ -5,6 +5,7 @@ import {
   updateDoc,
   doc,
   serverTimestamp,
+  deleteDoc,
   getDocs,
 } from '@firebase/firestore';
 import { db } from '../lib/firebase';
@@ -25,6 +26,13 @@ export const addProduct = ({
     numberOfPurchases,
     createdAt: serverTimestamp(),
   });
+
+export const handleDelete = async (productID) => {
+  const productRef = doc(db, 'listToken', productID);
+  if (window.confirm('Are you sure you want to delete?')) {
+    await deleteDoc(productRef);
+  }
+};
 
 export const updatePurchaseDate = (productID, listToken) => {
   const productRef = doc(db, listToken, productID);
