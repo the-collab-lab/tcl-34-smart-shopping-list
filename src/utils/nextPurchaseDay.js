@@ -5,15 +5,15 @@ export const nextPurchaseDay = (
 ) => {
   const nextEstimatedPurchase = 2 * daysUntilNextPurchase;
   if (numberOfPurchases === 1 || lastPurchaseDate === nextEstimatedPurchase) {
-    return 'Inactive';
+    return 'inactive';
   }
   if (daysUntilNextPurchase < 7) {
-    return 'Soon';
+    return 'soon';
   }
   if (daysUntilNextPurchase >= 7 || daysUntilNextPurchase <= 30) {
-    return 'Kind of soon';
+    return 'kindOfSoon';
   }
   if (daysUntilNextPurchase > 30) {
-    return 'Not any soon';
+    return 'notAnySoon';
   }
 };
