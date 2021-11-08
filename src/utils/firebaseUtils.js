@@ -27,10 +27,14 @@ export const addProduct = ({
     createdAt: serverTimestamp(),
   });
 
-export const handleDelete = async (productID) => {
-  const productRef = doc(db, 'listToken', productID);
+export const handleDelete = async (productID, listToken) => {
+  const productRef = doc(db, listToken, productID);
   if (window.confirm('Are you sure you want to delete?')) {
-    await deleteDoc(productRef);
+    await deleteDoc(productRef)
+      .then(window.alert('Successfully deleted product.'))
+      .catch(
+        window.alert('It was not possible to delete the product. Try again.'),
+      );
   }
 };
 
