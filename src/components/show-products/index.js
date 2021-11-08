@@ -137,7 +137,8 @@ export const ShowProducts = () => {
                 <span className="checkbox-name">{productName}</span>
                 <button
                   className="button-delete"
-                  onClick={() => handleDelete(id)}
+                  aria-label="This button deletes a product."
+                  onClick={() => handleDelete(id, storedValue)}
                 >
                   Delete
                 </button>
