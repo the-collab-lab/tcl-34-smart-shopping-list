@@ -20,6 +20,7 @@ import {
 } from '../../utils/diffBetweenTodayAndDate';
 import { getFilteredResults } from '../../utils/getFilteredResults';
 import { findProductById } from '../../utils/findProductById';
+import { nextPurchaseDay } from '../../utils/nextPurchaseDay';
 import ContentContainer from '../content-container';
 import Button from '../button';
 
@@ -64,7 +65,7 @@ export const ShowProducts = () => {
   };
 
   const deleteSearchTerm = () => setSearchTerm('');
-
+  // const getNextPurchaseLabel = nextPurchaseDay(...params)
   useEffect(() => {
     setList(getFilteredResults(searchTerm, products));
   }, [searchTerm, products]);
@@ -117,27 +118,41 @@ export const ShowProducts = () => {
 
       {list.length > 0 ? (
         <ul>
-          {list.map(({ id, productName, lastPurchaseDate, timeFrame }) => (
-            <li className="checkbox-item" key={id}>
-              <label htmlFor={id} className="checkbox-label">
-                <input
-                  type="checkbox"
-                  id={id}
-                  name={productName}
-                  onChange={(event) => handleCheckboxChange(event, id)}
-                  checked={
-                    lastPurchaseDate &&
-                    diffBetweenTodayAndDate(lastPurchaseDate.toDate()) < one_day
-                  }
-                  aria-label={TimeFrames[timeFrame]}
-                />
-                <span
-                  className={`checkmark checkbox-timeFrame-${timeFrame}`}
-                ></span>
-                <span className="checkbox-name">{productName}</span>
-              </label>
-            </li>
-          ))}
+          {list.map(
+            ({
+              id,
+              productName,
+              lastPurchaseDate,
+              timeFrame,
+              daysUntilNextPurchase,
+              numberOfPurchases,
+            }) => (
+              <li className="checkbox-item" key={id}>
+                <label htmlFor={id} className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    id={id}
+                    name={productName}
+                    onChange={(event) => handleCheckboxChange(event, id)}
+                    checked={
+                      lastPurchaseDate &&
+                      diffBetweenTodayAndDate(lastPurchaseDate.toDate()) <
+                        one_day
+                    }
+                    aria-label={TimeFrames[timeFrame]}
+                  />
+                  <span
+                    className={`checkmark checkbox-timeFrame-${nextPurchaseDay(
+                      daysUntilNextPurchase,
+                      lastPurchaseDate,
+                      numberOfPurchases,
+                    )}`}
+                  ></span>
+                  <span className="checkbox-name">{productName}</span>
+                </label>
+              </li>
+            ),
+          )}
         </ul>
       ) : (
         <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm}'`}</p>
