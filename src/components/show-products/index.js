@@ -66,8 +66,8 @@ export const ShowProducts = () => {
   const handleDeleteProduct = (productID) => {
     if (window.confirm('Are you sure you want to delete?')) {
       deleteProduct(productID, storedValue)
-        .then(window.alert('Successfully deleted product.'))
-        .catch(
+        .then(() => window.alert('Successfully deleted product.'))
+        .catch(() =>
           window.alert('It was not possible to delete the product. Try again.'),
         );
     }
