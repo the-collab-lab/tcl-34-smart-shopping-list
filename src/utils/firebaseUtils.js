@@ -9,6 +9,8 @@ import {
   getDocs,
 } from '@firebase/firestore';
 import { db } from '../lib/firebase';
+import { Contexts } from '../helpers/validatedCollection';
+import { validatedCollection } from '../helpers/validatedCollection';
 
 export const addProduct = ({
   productName,
@@ -16,9 +18,9 @@ export const addProduct = ({
   lastPurchaseDate,
   daysUntilNextPurchase,
   numberOfPurchases,
-  listToken,
+  collectionID = validatedCollection(Contexts.list),
 }) =>
-  addDoc(collection(db, listToken), {
+  addDoc(collection(db, collectionID), {
     productName,
     timeFrame,
     lastPurchaseDate,
@@ -27,19 +29,20 @@ export const addProduct = ({
     createdAt: serverTimestamp(),
   });
 
-export const handleDelete = async (productID, listToken) => {
-  const productRef = doc(db, listToken, productID);
-  if (window.confirm('Are you sure you want to delete?')) {
-    await deleteDoc(productRef)
-      .then(window.alert('Successfully deleted product.'))
-      .catch(
-        window.alert('It was not possible to delete the product. Try again.'),
-      );
-  }
+export const deleteProduct = async (
+  productID,
+  collectionID = validatedCollection(Contexts.list),
+) => {
+  const productRef = doc(db, collectionID, productID);
+
+  return deleteDoc(productRef);
 };
 
-export const updatePurchaseDate = (productID, listToken) => {
-  const productRef = doc(db, listToken, productID);
+export const updatePurchaseDate = (
+  productID,
+  collectionID = validatedCollection(Contexts.list),
+) => {
+  const productRef = doc(db, collectionID, productID);
 
   return updateDoc(productRef, {
     lastPurchaseDate: serverTimestamp(),
