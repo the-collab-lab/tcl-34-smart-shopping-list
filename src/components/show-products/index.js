@@ -12,7 +12,7 @@ import {
 } from '../../hooks/useLocalStorage';
 
 //Utils
-import { handleDelete, updatePurchaseDate } from '../../utils/firebaseUtils';
+import { deleteProduct, updatePurchaseDate } from '../../utils/firebaseUtils';
 import { TimeFrames } from '../../utils/timeFrames';
 import {
   diffBetweenTodayAndDate,
@@ -63,7 +63,15 @@ export const ShowProducts = () => {
     }
   };
 
-  const deleteSearchTerm = () => setSearchTerm('');
+  const handleDeleteProduct = (productID) => {
+    if (window.confirm('Are you sure you want to delete?')) {
+      deleteProduct(productID, storedValue)
+        .then(window.alert('Successfully deleted product.'))
+        .catch(
+          window.alert('It was not possible to delete the product. Try again.'),
+        );
+    }
+  };
 
   useEffect(() => {
     setList(getFilteredResults(searchTerm, products));
@@ -107,7 +115,7 @@ export const ShowProducts = () => {
         {searchTerm && (
           <input
             className="close-icon"
-            onClick={deleteSearchTerm}
+            onClick={() => setSearchTerm('')}
             type="reset"
             value="X"
             aria-label="This button clears the content of the search field."
@@ -138,7 +146,7 @@ export const ShowProducts = () => {
                 <button
                   className="button-delete"
                   aria-label="This button deletes a product."
-                  onClick={() => handleDelete(id, storedValue)}
+                  onClick={() => handleDeleteProduct(id)}
                 >
                   Delete
                 </button>
