@@ -13,7 +13,7 @@ import {
 
 //Utils
 import { updatePurchaseDate } from '../../utils/firebaseUtils';
-import { TimeFrames } from '../../utils/timeFrames';
+import { TimeFrames, TimeFrameLabels } from '../../utils/timeFrames';
 import {
   diffBetweenTodayAndDate,
   ONE_DAY,
@@ -27,9 +27,10 @@ import Button from '../button';
 import './styles.css';
 
 export const ShowProducts = () => {
+  const [probar, setProbar] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [list, setList] = useState([]);
-  const { products, loading } = useProducts();
+  const { products, updateProducts, loading } = useProducts();
   const { push } = useHistory();
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
   const one_day = ONE_DAY;
@@ -63,12 +64,34 @@ export const ShowProducts = () => {
       );
     }
   };
+  useEffect(() => {
+    /**
+     * We try to add this new key:value
+     * to the original Product state,
+     * but we couldn't so we created a new state and
+     * use this new one to send as a param dependency
+     * to setList
+     *
+     * **/
+    const productsWithFrameLabel = products?.map((item) => {
+      return {
+        ...item,
+        timeFrameLabel: nextPurchaseDay(
+          item.daysUntilNextPurchase,
+          item.lastPurchaseDate,
+          item.numberOfPurchases,
+        ),
+      };
+    });
+
+    setProbar(productsWithFrameLabel);
+  }, []);
 
   const deleteSearchTerm = () => setSearchTerm('');
-  // const getNextPurchaseLabel = nextPurchaseDay(...params)
+
   useEffect(() => {
-    setList(getFilteredResults(searchTerm, products));
-  }, [searchTerm, products]);
+    setList(getFilteredResults(searchTerm, probar));
+  }, [searchTerm, probar]);
 
   if (loading) {
     return (
@@ -126,6 +149,7 @@ export const ShowProducts = () => {
               timeFrame,
               daysUntilNextPurchase,
               numberOfPurchases,
+              timeFrameLabel,
             }) => (
               <li className="checkbox-item" key={id}>
                 <label htmlFor={id} className="checkbox-label">
@@ -139,14 +163,10 @@ export const ShowProducts = () => {
                       diffBetweenTodayAndDate(lastPurchaseDate.toDate()) <
                         one_day
                     }
-                    aria-label={TimeFrames[timeFrame]}
+                    aria-label={TimeFrameLabels[timeFrameLabel]}
                   />
                   <span
-                    className={`checkmark checkbox-timeFrame-${nextPurchaseDay(
-                      daysUntilNextPurchase,
-                      lastPurchaseDate,
-                      numberOfPurchases,
-                    )}`}
+                    className={`checkmark checkbox-timeFrame-${timeFrameLabel}`}
                   ></span>
                   <span className="checkbox-name">{productName}</span>
                 </label>
