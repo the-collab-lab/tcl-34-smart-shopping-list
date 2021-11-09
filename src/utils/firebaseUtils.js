@@ -9,8 +9,6 @@ import {
   getDocs,
 } from '@firebase/firestore';
 import { db } from '../lib/firebase';
-import { Contexts } from '../helpers/validatedCollection';
-import { validatedCollection } from '../helpers/validatedCollection';
 
 export const addProduct = ({
   productName,
@@ -18,9 +16,9 @@ export const addProduct = ({
   lastPurchaseDate,
   daysUntilNextPurchase,
   numberOfPurchases,
-  collectionID = validatedCollection(Contexts.list),
+  listToken,
 }) =>
-  addDoc(collection(db, collectionID), {
+  addDoc(collection(db, listToken), {
     productName,
     timeFrame,
     lastPurchaseDate,
@@ -29,20 +27,14 @@ export const addProduct = ({
     createdAt: serverTimestamp(),
   });
 
-export const deleteProduct = async (
-  productID,
-  collectionID = validatedCollection(Contexts.list),
-) => {
-  const productRef = doc(db, collectionID, productID);
+export const deleteProduct = async (productID, listToken = '') => {
+  const productRef = doc(db, listToken, productID);
 
   return deleteDoc(productRef);
 };
 
-export const updatePurchaseDate = (
-  productID,
-  collectionID = validatedCollection(Contexts.list),
-) => {
-  const productRef = doc(db, collectionID, productID);
+export const updatePurchaseDate = (productID, listToken) => {
+  const productRef = doc(db, listToken, productID);
 
   return updateDoc(productRef, {
     lastPurchaseDate: serverTimestamp(),
