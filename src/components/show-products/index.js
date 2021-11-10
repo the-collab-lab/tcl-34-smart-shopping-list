@@ -13,7 +13,7 @@ import {
 
 //Utils
 import { updatePurchaseDate } from '../../utils/firebaseUtils';
-import { TimeFrames, TimeFrameLabels } from '../../utils/timeFrames';
+import { TimeFrameLabels } from '../../utils/timeFrames';
 import {
   diffBetweenTodayAndDate,
   ONE_DAY,
@@ -27,10 +27,9 @@ import Button from '../button';
 import './styles.css';
 
 export const ShowProducts = () => {
-  const [probar, setProbar] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [list, setList] = useState([]);
-  const { products, updateProducts, loading } = useProducts();
+  const { products, loading } = useProducts();
   const { push } = useHistory();
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
   const one_day = ONE_DAY;
@@ -64,34 +63,12 @@ export const ShowProducts = () => {
       );
     }
   };
-  useEffect(() => {
-    /**
-     * We try to add this new key:value
-     * to the original Product state,
-     * but we couldn't so we created a new state and
-     * use this new one to send as a param dependency
-     * to setList
-     *
-     * **/
-    const productsWithFrameLabel = products?.map((item) => {
-      return {
-        ...item,
-        timeFrameLabel: nextPurchaseDay(
-          item.daysUntilNextPurchase,
-          item.lastPurchaseDate,
-          item.numberOfPurchases,
-        ),
-      };
-    });
-
-    setProbar(productsWithFrameLabel);
-  }, []);
 
   const deleteSearchTerm = () => setSearchTerm('');
 
   useEffect(() => {
-    setList(getFilteredResults(searchTerm, probar));
-  }, [searchTerm, probar]);
+    setList(getFilteredResults(searchTerm, products));
+  }, [searchTerm, products]);
 
   if (loading) {
     return (
