@@ -117,38 +117,27 @@ export const ShowProducts = () => {
 
       {list.length > 0 ? (
         <ul>
-          {list.map(
-            ({
-              id,
-              productName,
-              lastPurchaseDate,
-              timeFrame,
-              daysUntilNextPurchase,
-              numberOfPurchases,
-              timeFrameLabel,
-            }) => (
-              <li className="checkbox-item" key={id}>
-                <label htmlFor={id} className="checkbox-label">
-                  <input
-                    type="checkbox"
-                    id={id}
-                    name={productName}
-                    onChange={(event) => handleCheckboxChange(event, id)}
-                    checked={
-                      lastPurchaseDate &&
-                      diffBetweenTodayAndDate(lastPurchaseDate.toDate()) <
-                        one_day
-                    }
-                    aria-label={TimeFrameLabels[timeFrameLabel]}
-                  />
-                  <span
-                    className={`checkmark checkbox-timeFrame-${timeFrameLabel}`}
-                  ></span>
-                  <span className="checkbox-name">{productName}</span>
-                </label>
-              </li>
-            ),
-          )}
+          {list.map(({ id, productName, lastPurchaseDate, timeFrameLabel }) => (
+            <li className="checkbox-item" key={id}>
+              <label htmlFor={id} className="checkbox-label">
+                <input
+                  type="checkbox"
+                  id={id}
+                  name={productName}
+                  onChange={(event) => handleCheckboxChange(event, id)}
+                  checked={
+                    lastPurchaseDate &&
+                    diffBetweenTodayAndDate(lastPurchaseDate.toDate()) < one_day
+                  }
+                  aria-label={TimeFrameLabels[timeFrameLabel]}
+                />
+                <span
+                  className={`checkmark checkbox-timeFrame-${timeFrameLabel}`}
+                ></span>
+                <span className="checkbox-name">{productName}</span>
+              </label>
+            </li>
+          ))}
         </ul>
       ) : (
         <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm}'`}</p>
