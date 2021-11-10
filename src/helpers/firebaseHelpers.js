@@ -16,5 +16,16 @@ export const parseData = (querySnapshot) =>
           product.numberOfPurchases,
         ),
       },
-    ];
+    ].sort((a, b) => {
+      if (a.daysUntilNextPurchase === b.daysUntilNextPurchase) {
+        if (a.productName > b.productName) {
+          return 1;
+        }
+        return -1;
+      }
+      if (a.daysUntilNextPurchase > b.daysUntilNextPurchase) {
+        return 1;
+      }
+      return -1;
+    });
   }, []);
