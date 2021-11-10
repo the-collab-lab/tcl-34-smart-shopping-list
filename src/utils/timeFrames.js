@@ -4,6 +4,10 @@ export const TimeFrames = {
   30: 'Not soon',
 };
 
+/**
+ * We use the key from these object to add the aria-label
+ * and the color for each item
+ **/
 export const TimeFrameLabels = {
   inactive: 'This item is inactive due to the amount of time',
   soon: 'You are expected to buy this item soon',
