@@ -10,6 +10,10 @@ export const parseData = (querySnapshot) =>
       {
         id,
         ...product,
+        /***
+         * We most transform the data to have acces
+         * to a propper aria-label and it's color
+         */
         timeFrameLabel: nextPurchaseDay(
           product.daysUntilNextPurchase,
           product.lastPurchaseDate,
@@ -17,6 +21,10 @@ export const parseData = (querySnapshot) =>
         ),
       },
     ].sort((a, b) => {
+      /***
+       * Firt we verified if days are equals in order to sort names alphabetically
+       * If not we sort the items by the days
+       */
       if (a.daysUntilNextPurchase === b.daysUntilNextPurchase) {
         if (a.productName > b.productName) {
           return 1;
