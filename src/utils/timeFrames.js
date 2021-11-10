@@ -1,9 +1,3 @@
-export const TimeFrames = {
-  7: 'Soon',
-  14: 'Kind of soon',
-  30: 'Not soon',
-};
-
 /**
  * We use the key from these object to add the aria-label
  * and the color for each item
