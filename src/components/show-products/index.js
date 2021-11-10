@@ -20,7 +20,6 @@ import {
 } from '../../utils/diffBetweenTodayAndDate';
 import { getFilteredResults } from '../../utils/getFilteredResults';
 import { findProductById } from '../../utils/findProductById';
-import { nextPurchaseDay } from '../../utils/nextPurchaseDay';
 import ContentContainer from '../content-container';
 import Button from '../button';
 
