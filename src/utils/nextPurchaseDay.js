@@ -1,3 +1,9 @@
+/***
+ * Firts we verified by specificity and
+ * we return the string that is used for the
+ * aria-label and to add the proper style
+ */
+
 export const nextPurchaseDay = (
   daysUntilNextPurchase,
   lastPurchaseDate,
