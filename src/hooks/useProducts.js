@@ -38,8 +38,5 @@ export const useProducts = () => {
     };
   }, [storedValue]);
 
-  const updateProducts = (productsWithTimeFrameLabel) =>
-    setProducts(productsWithTimeFrameLabel);
-
-  return { products, updateProducts, loading, error };
+  return { products, loading, error };
 };
