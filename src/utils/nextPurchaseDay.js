@@ -16,7 +16,7 @@ export const nextPurchaseDay = (
   if (daysUntilNextPurchase < 7) {
     return 'soon';
   }
-  if (daysUntilNextPurchase >= 7 || daysUntilNextPurchase <= 30) {
+  if (daysUntilNextPurchase >= 7 && daysUntilNextPurchase <= 30) {
     return 'kindOfSoon';
   }
   if (daysUntilNextPurchase > 30) {
