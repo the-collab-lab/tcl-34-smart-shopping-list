@@ -63,12 +63,16 @@ export const ShowProducts = () => {
     }
   };
 
-  const handleDeleteProduct = (productID) => {
-    if (window.confirm('Are you sure you want to delete?')) {
+  const handleDeleteProduct = (productID, productName) => {
+    if (window.confirm(`Are you sure you want to delete "${productName}"?`)) {
       deleteProduct(productID, storedValue)
-        .then(() => window.alert('Successfully deleted product.'))
+        .then(() =>
+          window.alert(`Successfully deleted product "${productName}".`),
+        )
         .catch(() =>
-          window.alert('It was not possible to delete the product. Try again.'),
+          window.alert(
+            `It was not possible to delete the product "${productName}". Try again.`,
+          ),
         );
     }
   };
@@ -140,13 +144,13 @@ export const ShowProducts = () => {
                   aria-label={TimeFrames[timeFrame]}
                 />
                 <span
-                  className={`checkmark checkbox-timeFrame-${timeFrame}`}
+                  className={`checkmark checkbox - timeFrame - ${timeFrame} `}
                 ></span>
                 <span className="checkbox-name">{productName}</span>
                 <button
                   className="button-delete"
-                  aria-label="This button deletes a product."
-                  onClick={() => handleDeleteProduct(id)}
+                  aria-label={`This button deletes the product ${productName}.`}
+                  onClick={() => handleDeleteProduct(id, productName)}
                 >
                   Delete
                 </button>
@@ -155,7 +159,7 @@ export const ShowProducts = () => {
           ))}
         </ul>
       ) : (
-        <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm}'`}</p>
+        <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm} '`}</p>
       )}
     </ContentContainer>
   );
