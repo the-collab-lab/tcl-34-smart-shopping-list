@@ -14,7 +14,7 @@ export const nextPurchaseDay = (
    * After some checks, we noticed lastPurchasedDate is a Date object
    * and must be transformed to a day in order to properly compare
    * However, there are some cases where the item has not been bought yet
-   * such as when the item has ben just added to the list
+   * such as when the item has just been added to the list
    * in this case, the lastPurchaseDate value is undefined
    * and to avoid that error, we give a new Date() value
    *
