@@ -38,8 +38,8 @@ export const ShowProducts = () => {
 
     const item = findProductById(products, productID);
     const days =
-      item.createdAt.toDate() !== 0
-        ? diffBetweenTodayAndDate(item.createdAt.toDate())
+      item.lastPurchaseDate !== null
+        ? diffBetweenTodayAndDate(item.lastPurchaseDate.toDate())
         : 0;
 
     const checked = event.target.checked;
