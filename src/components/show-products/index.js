@@ -144,7 +144,7 @@ export const ShowProducts = () => {
                   aria-label={TimeFrames[timeFrame]}
                 />
                 <span
-                  className={`checkmark checkbox - timeFrame - ${timeFrame} `}
+                  className={`checkmark checkbox-timeFrame-${timeFrame} `}
                 ></span>
                 <span className="checkbox-name">{productName}</span>
                 <button
