@@ -1,5 +1,5 @@
-export const sortProductsByTime = (products) =>
-  products.sort((a, b) => {
+export const sortProductsByTime = (products = []) =>
+  products?.sort((a, b) => {
     /***
      * First we verified if days are equals in order to sort names alphabetically
      * If not we sort the items by the days
