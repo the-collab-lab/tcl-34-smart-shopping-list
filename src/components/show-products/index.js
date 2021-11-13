@@ -12,7 +12,7 @@ import {
 } from '../../hooks/useLocalStorage';
 
 //Utils
-import { updatePurchaseDate } from '../../utils/firebaseUtils';
+import { deleteProduct, updatePurchaseDate } from '../../utils/firebaseUtils';
 import { TimeFrameLabels } from '../../utils/timeFrames';
 import {
   diffBetweenTodayAndDate,
@@ -63,7 +63,19 @@ export const ShowProducts = () => {
     }
   };
 
-  const deleteSearchTerm = () => setSearchTerm('');
+  const handleDeleteProduct = (productID, productName) => {
+    if (window.confirm(`Are you sure you want to delete "${productName}"?`)) {
+      deleteProduct(productID, storedValue)
+        .then(() =>
+          window.alert(`Successfully deleted product "${productName}".`),
+        )
+        .catch(() =>
+          window.alert(
+            `It was not possible to delete the product "${productName}". Try again.`,
+          ),
+        );
+    }
+  };
 
   useEffect(() => {
     setList(getFilteredResults(searchTerm, products));
@@ -107,7 +119,7 @@ export const ShowProducts = () => {
         {searchTerm && (
           <input
             className="close-icon"
-            onClick={deleteSearchTerm}
+            onClick={() => setSearchTerm('')}
             type="reset"
             value="X"
             aria-label="This button clears the content of the search field."
@@ -135,12 +147,19 @@ export const ShowProducts = () => {
                   className={`checkmark checkbox-timeFrame-${timeFrameLabel}`}
                 ></span>
                 <span className="checkbox-name">{productName}</span>
+                <button
+                  className="button-delete"
+                  aria-label={`This button deletes the product ${productName}.`}
+                  onClick={() => handleDeleteProduct(id, productName)}
+                >
+                  Delete
+                </button>
               </label>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm}'`}</p>
+        <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm} '`}</p>
       )}
     </ContentContainer>
   );

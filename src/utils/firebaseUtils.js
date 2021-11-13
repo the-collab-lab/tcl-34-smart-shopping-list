@@ -5,6 +5,7 @@ import {
   updateDoc,
   doc,
   serverTimestamp,
+  deleteDoc,
   getDocs,
 } from '@firebase/firestore';
 import { db } from '../lib/firebase';
@@ -25,6 +26,12 @@ export const addProduct = ({
     numberOfPurchases,
     createdAt: serverTimestamp(),
   });
+
+export const deleteProduct = async (productID, listToken = '') => {
+  const productRef = doc(db, listToken, productID);
+
+  return deleteDoc(productRef);
+};
 
 export const updatePurchaseDate = (productID, listToken) => {
   const productRef = doc(db, listToken, productID);

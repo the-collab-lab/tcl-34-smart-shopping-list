@@ -4,7 +4,8 @@
 
 /* Customize the label (the container) */
 .checkbox-label {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   position: relative;
   cursor: pointer;
   user-select: none;
@@ -96,4 +97,13 @@
   border: 0 solid;
   position: absolute;
   right: 8px;
+}
+
+.button-delete {
+  border: none;
+  background-color: transparent;
+  color: #000;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-left: 45px;
 }
