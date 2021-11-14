@@ -13,7 +13,7 @@ import {
 
 //Utils
 import { deleteProduct, updatePurchaseDate } from '../../utils/firebaseUtils';
-import { TimeFrames } from '../../utils/timeFrames';
+import { TimeFrameLabels } from '../../utils/timeFrames';
 import {
   diffBetweenTodayAndDate,
   ONE_DAY,
@@ -38,14 +38,14 @@ export const ShowProducts = () => {
 
     const item = findProductById(products, productID);
     const days =
-      item.createdAt.toDate() !== 0
-        ? diffBetweenTodayAndDate(item.createdAt.toDate())
+      item.lastPurchaseDate !== null
+        ? diffBetweenTodayAndDate(item.lastPurchaseDate.toDate())
         : 0;
 
     const checked = event.target.checked;
 
     const estimatedTime = calculateEstimate(
-      parseInt(item.timeFrame),
+      item.daysUntilNextPurchase,
       days,
       item.numberOfPurchases,
     );
@@ -129,7 +129,7 @@ export const ShowProducts = () => {
 
       {list.length > 0 ? (
         <ul>
-          {list.map(({ id, productName, lastPurchaseDate, timeFrame }) => (
+          {list.map(({ id, productName, lastPurchaseDate, timeFrameLabel }) => (
             <li className="checkbox-item" key={id}>
               <label htmlFor={id} className="checkbox-label">
                 <input
@@ -141,10 +141,10 @@ export const ShowProducts = () => {
                     lastPurchaseDate &&
                     diffBetweenTodayAndDate(lastPurchaseDate.toDate()) < one_day
                   }
-                  aria-label={TimeFrames[timeFrame]}
+                  aria-label={TimeFrameLabels[timeFrameLabel]}
                 />
                 <span
-                  className={`checkmark checkbox-timeFrame-${timeFrame} `}
+                  className={`checkmark checkbox-timeFrame-${timeFrameLabel}`}
                 ></span>
                 <span className="checkbox-name">{productName}</span>
                 <button

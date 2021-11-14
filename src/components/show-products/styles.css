@@ -60,18 +60,20 @@
   transform: rotate(45deg);
 }
 
-.checkbox-timeFrame-7 {
+.checkbox-timeFrame-soon {
   background-color: #fcb6b6;
 }
 
-.checkbox-timeFrame-14 {
+.checkbox-timeFrame-kindOfSoon {
   background-color: #fff0d4;
 }
 
-.checkbox-timeFrame-30 {
+.checkbox-timeFrame-notAnySoon {
   background-color: #e5f5e2;
 }
-
+.checkbox-timeFrame-inactive {
+  background-color: gray;
+}
 .filter-form {
   display: flex;
   flex-direction: column;

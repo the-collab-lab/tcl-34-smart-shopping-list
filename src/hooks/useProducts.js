@@ -3,6 +3,7 @@ import { db } from '../lib/firebase';
 import { collection, query, onSnapshot } from '@firebase/firestore';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { parseData } from '../helpers/firebaseHelpers';
+import { sortProductsByTime } from '../utils/sortProductsByTime';
 
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
@@ -21,7 +22,9 @@ export const useProducts = () => {
         const queryProducts = query(productsCollection);
 
         unsubscribe = onSnapshot(queryProducts, (querySnapshot) => {
-          setProducts(parseData(querySnapshot));
+          const parsedData = parseData(querySnapshot);
+          const sortedData = sortProductsByTime(parsedData);
+          setProducts(sortedData);
           setLoading(false);
         });
       } catch (error) {
