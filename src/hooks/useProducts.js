@@ -23,7 +23,7 @@ export const useProducts = () => {
 
         unsubscribe = onSnapshot(queryProducts, (querySnapshot) => {
           const parsedData = parseData(querySnapshot);
-          const sortedData = sortProductsByTime(parseData);
+          const sortedData = sortProductsByTime(parsedData);
           setProducts(sortedData);
           setLoading(false);
         });
