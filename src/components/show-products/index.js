@@ -45,7 +45,7 @@ export const ShowProducts = () => {
     const checked = event.target.checked;
 
     const estimatedTime = calculateEstimate(
-      parseInt(item.timeFrame),
+      item.daysUntilNextPurchase,
       days,
       item.numberOfPurchases,
     );
