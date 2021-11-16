@@ -1,6 +1,7 @@
 .input-item {
-  border-radius: 4px;
-  line-height: 2;
+  border-radius: 25px;
+  border-color: darkgray;
+  line-height: 2.5;
   margin-top: 8px;
   margin-bottom: 20px;
   padding: 0px 10px;

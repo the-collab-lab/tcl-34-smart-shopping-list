@@ -1,3 +1,14 @@
+body {
+  background-color: #f2b807;
+}
+
+.add-container {
+  background: #f0f0f2;
+  border-radius: 4%;
+  height: 100%;
+  width: 300px;
+}
+
 .add-form {
   align-items: center;
   flex-direction: column;

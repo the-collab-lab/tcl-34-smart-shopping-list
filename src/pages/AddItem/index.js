@@ -94,7 +94,6 @@ export const AddItemPage = () => {
               Add Item
             </Button>
           </form>
-
           {isLoading ? <p>Adding product...</p> : null}
           {message ? <p>{message}</p> : null}
           <Navigation />
