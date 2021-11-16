@@ -36,7 +36,7 @@ export const JoinList = () => {
 
   return (
     <form onSubmit={retrieveList} className="add-form">
-      <label htmlFor="productName">
+      <label className="share-token" htmlFor="productName">
         Share token
         <input
           className="input-item"

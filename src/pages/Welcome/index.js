@@ -8,19 +8,18 @@ import './style.css';
 
 export const Welcome = () => (
   <ContentContainer>
-    <Header className="welcome-header">
-      Welcome to your <br />
-      Smart Shopping list!
-    </Header>
-    <div className="welcome-form">
-      <CreateList />
-      <p className="welcome-text center">- or -</p>
-      <p className="welcome-text">
-        Join an existing shopping list
-        <br />
-        by entering a three word token.
-      </p>
-      <JoinList />
-    </div>
+    <main className="welcome-container">
+      <Header className="welcome-header">
+        Welcome to your Smart Shopping List!
+      </Header>
+      <div className="welcome-form">
+        <CreateList />
+        <p className="welcome-text center">- or -</p>
+        <p className="welcome-text">
+          Join an existing shopping list by entering a three word token.
+        </p>
+        <JoinList />
+      </div>
+    </main>
   </ContentContainer>
 );

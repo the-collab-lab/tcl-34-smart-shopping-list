@@ -1,18 +1,42 @@
+.welcome-container {
+  background: url('./shopping-welcom-image.svg') no-repeat;
+  background-color: #f2b807;
+  background-position: center top 24%;
+  background-size: 86px;
+  height: 100vh;
+  padding: 20px;
+  width: 100%;
+}
+
 .welcome-form {
-  width: 250px;
+  padding: 30px;
   text-align: left;
-  margin-top: 50px;
 }
 
 .welcome-text {
-  margin: 40px 0;
+  margin: 32px 0;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
 }
 
 .welcome-header {
+  font-family: 'Dosis', sans-serif;
+  font-size: 30px;
+  margin-bottom: 60px;
+  padding: 48px 0;
   position: relative;
   top: unset;
 }
 
 .center {
   text-align: center;
+}
+
+/** component join-list **/
+.share-token {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
 }
