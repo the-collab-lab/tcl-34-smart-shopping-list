@@ -1,21 +1,33 @@
+.addform-container {
+  margin-top: 30px;
+  height: 300px;
+}
+
 .input-item {
   border-radius: 25px;
-  border-color: darkgray;
+  border: 2px solid white;
   line-height: 2.5;
   margin-top: 8px;
   margin-bottom: 20px;
   padding: 0px 10px;
   width: 100%;
+  background-color: white;
 }
 
 .time-frame {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   font-size: 15px;
   margin-bottom: 60px;
   list-style-type: none;
   padding: 15px;
+  height: 200px;
+  border: 2px solid white;
+  border-radius: 25px;
+  background-color: #f2b807;
+  opacity: 0.8;
 }
 
 .time-frame-label {

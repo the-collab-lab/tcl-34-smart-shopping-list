@@ -4,7 +4,8 @@ body {
 
 .add-container {
   background: #f0f0f2;
-  border-radius: 4%;
+  border: 2px solid white;
+  border-radius: 25px;
   height: 100%;
   width: 300px;
 }

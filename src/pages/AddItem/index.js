@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 import Button from '../../components/button';
 import ContentContainer from '../../components/content-container';
@@ -91,7 +92,7 @@ export const AddItemPage = () => {
           <form onSubmit={onSubmit} className="add-form">
             <AddForm handleForm={handleForm} formState={formState} />
             <Button type="submit" disabled={formState.productName === ''}>
-              Add Item
+              <BsFillPlusCircleFill />
             </Button>
           </form>
           {isLoading ? <p>Adding product...</p> : null}

@@ -3,7 +3,7 @@ import RadioInput from '../radio-input';
 import './styles.css';
 
 const AddForm = ({ formState, handleForm }) => (
-  <>
+  <div className="addform-container">
     <label htmlFor="productName">
       Item name:
       <input
@@ -44,7 +44,7 @@ const AddForm = ({ formState, handleForm }) => (
         required
       />
     </fieldset>
-  </>
+  </div>
 );
 
 export default AddForm;
