@@ -1,16 +1,17 @@
 .welcome-container {
-  background: url('./shopping-welcom-image.svg') no-repeat;
+  align-items: center;
   background-color: #f2b807;
-  background-position: center top 24%;
-  background-size: 86px;
+  display: flex;
   height: 100vh;
+  flex-direction: column;
   padding: 20px;
   width: 100%;
 }
 
 .welcome-form {
-  padding: 30px;
+  padding: 0 30px;
   text-align: left;
+  max-width: 700px;
 }
 
 .welcome-text {
@@ -22,11 +23,16 @@
 }
 
 .welcome-header {
+  align-items: flex-start;
+  background: url('./shopping-welcom-image.svg') no-repeat;
+  background-position: center top 75%;
+  background-size: 86px;
   font-family: 'Dosis', sans-serif;
+  font-weight: 600;
   font-size: 30px;
-  margin-bottom: 60px;
-  padding: 48px 0;
+  height: 200px;
   position: relative;
+  text-align: center;
   top: unset;
 }
 
@@ -39,4 +45,24 @@
   font-family: 'Dosis', sans-serif;
   font-weight: 600;
   font-size: 18px;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .welcome-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .welcome-header {
+    background-position: center top 98%;
+    background-size: 165px;
+    font-size: 38px;
+    max-width: 600px;
+    padding: 0 24px;
+    bottom: 50px;
+  }
+
+  .welcome-form {
+    font-size: 22px;
+  }
 }
