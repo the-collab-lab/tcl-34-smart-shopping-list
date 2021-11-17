@@ -2,12 +2,16 @@ body {
   background-color: #f2b807;
 }
 
+.add-header {
+}
+
 .add-container {
   background: #f0f0f2;
   border: 2px solid white;
   border-radius: 25px;
   height: 100%;
   width: 300px;
+  margin-top: 40px;
 }
 
 .add-form {

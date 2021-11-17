@@ -94,6 +94,8 @@ export const AddItemPage = () => {
             <Button type="submit" disabled={formState.productName === ''}>
               <BsFillPlusCircleFill />
             </Button>
+            {isLoading ? <p>Adding product...</p> : null}
+            {message ? <p>{message}</p> : null}
           </form>
           {isLoading ? <p>Adding product...</p> : null}
           {message ? <p>{message}</p> : null}
