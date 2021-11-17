@@ -54,6 +54,7 @@ ul {
   color: black;
   font-size: 16px;
   padding: 7px;
+  text-decoration: none;
 }
 
 .welcome-button {
