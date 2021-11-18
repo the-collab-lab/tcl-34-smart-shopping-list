@@ -18,7 +18,9 @@ const AddForm = ({ formState, handleForm }) => (
       />
     </label>
     <fieldset className="time-frame" defaultValue="7">
-      <legend>How soon will you buy this again?</legend>
+      <legend className="time-frame-legend">
+        How soon will you buy this again?
+      </legend>
       <RadioInput
         styles="time-frame-label"
         onChange={(event) => handleForm(event)}

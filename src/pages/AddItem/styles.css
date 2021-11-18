@@ -2,35 +2,49 @@ body {
   background-color: #f2b807;
 }
 
-.add-header {
+.add-container {
   background: url('./shopping-add-image.svg') no-repeat;
   background-size: 60px;
-  background-position: right top 24%;
-  width: 300px;
-  margin-right: 20px;
-}
-
-.add-container {
-  background: white;
-  border: 2px solid white;
+  background-position: right 10% top;
+  background-color: white;
   border-radius: 25px;
-  height: 80vh;
-  width: 300px;
-  margin-top: 80px;
+  height: 90vh;
+  width: 500px;
+  margin-top: 20px;
 }
 
 .add-form {
+  text-align: left;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   width: fit-content;
   display: flex;
-  margin: 0 auto 30px;
+  margin: 60px auto 5px;
   height: 60vh;
+}
+  
+.button-addform {
+  background-color: #f2b807;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: none;
+  color: #000;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 25px;
 }
 
 @media screen and (max-width: 920px) {
   .add-form {
     margin-top: 16px;
+  }
+
+  .add-container,
+  .add-form {
+    width: 100%;
   }
 }

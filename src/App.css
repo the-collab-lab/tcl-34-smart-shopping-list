@@ -54,3 +54,13 @@ ul {
     padding: 20px 0;
   }
 }
+
+@media screen and (max-width: 920px) {
+  #root {
+    padding: 20px 0;
+  }
+
+  .content-container {
+    width: 80%;
+  }
+}
