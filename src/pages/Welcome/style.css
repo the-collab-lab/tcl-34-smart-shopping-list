@@ -3,9 +3,14 @@
   background-color: #f2b807;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   padding: 20px;
   width: 100%;
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .welcome-form {
@@ -14,23 +19,23 @@
   text-align: left;
 }
 
+.shoppin-cart-image {
+  height: auto;
+  max-width: 100%;
+  padding: 26px 110px;
+}
+
 .welcome-text {
   margin: 32px 0;
   font-size: 18px;
-  font-family: 'Dosis', sans-serif;
-  font-weight: 600;
   text-align: center;
 }
 
 .welcome-header {
   align-items: flex-start;
-  background: url('./shopping-welcom-image.svg') no-repeat;
-  background-position: center top 75%;
-  background-size: 86px;
-  font-family: 'Dosis', sans-serif;
   font-weight: 600;
   font-size: 30px;
-  height: 200px;
+  height: 100px;
   position: relative;
   text-align: center;
   top: unset;
@@ -42,7 +47,6 @@
 
 /** component join-list **/
 .share-token {
-  font-family: 'Dosis', sans-serif;
   font-size: 18px;
   font-weight: 600;
   width: 100%;
@@ -50,18 +54,28 @@
 
 @media (min-width: 1024px) {
   .welcome-container {
-    flex-direction: row;
     justify-content: center;
+    height: 100vh;
   }
   .welcome-header {
-    background-position: center top 98%;
-    background-size: 165px;
     font-size: 38px;
-    max-width: 600px;
     padding: 0 24px;
+  }
+
+  .welcome-content {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .shoppin-cart-image {
+    height: 400px;
+    margin-right: 60px;
+    padding: 0;
+    width: 400px;
   }
 
   .welcome-form {
     font-size: 22px;
+    width: 500px;
   }
 }
