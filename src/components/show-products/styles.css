@@ -2,6 +2,15 @@
   margin-bottom: 20px;
 }
 
+.checkbox-item {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* Customize the label (the container) */
 .checkbox-label {
   display: flex;
@@ -28,6 +37,7 @@
 
 /* Create a custom checkbox */
 .checkmark {
+  background-color: #fff;
   position: absolute;
   top: 3px;
   left: 0;
@@ -60,6 +70,11 @@
   transform: rotate(45deg);
 }
 
+/* .checkbox-item input {
+  transform: scale(1.4);
+  margin-right: 20px;
+} */
+
 .checkbox-timeFrame-soon {
   background-color: #fcb6b6;
 }
@@ -72,38 +87,61 @@
   background-color: #e5f5e2;
 }
 .checkbox-timeFrame-inactive {
-  background-color: gray;
+  background-color: #ccc;
 }
+
+.checked-label {
+  text-decoration: line-through;
+}
+
 .filter-form {
   display: flex;
   flex-direction: column;
   text-align: left;
   margin: 0 auto 30px;
   position: relative;
+  width: 80%;
 }
 
 .search-item {
-  border-radius: 4px;
+  border-radius: 8px;
   line-height: 2;
   margin-top: 8px;
   margin-bottom: 20px;
-  padding: 0px 10px;
+  padding: 5px 10px;
   width: 100%;
+  border: #f2b807 solid 2px;
+}
+
+.search-item:focus {
+  outline: #f2b807;
 }
 
 .close-icon {
-  bottom: 26px;
+  font-size: 20px;
+  bottom: 25px;
   background-color: transparent;
-  border: 0 solid;
+  border: none;
   position: absolute;
-  right: 8px;
+  right: 15px;
 }
 
 .button-delete {
   border: none;
   background-color: transparent;
-  color: #000;
-  font-weight: 500;
-  text-decoration: underline;
-  margin-left: 45px;
+  display: flex;
+  font-size: 18px;
+}
+
+.products-list {
+  overflow-y: auto;
+  width: 80%;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 920px) {
+  .products-list,
+  .filter-form {
+    width: 100%;
+  }
 }
