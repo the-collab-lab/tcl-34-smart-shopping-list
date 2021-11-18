@@ -7,6 +7,12 @@
     sans-serif;
 }
 
+#root {
+  background-color: #f2b807;
+  height: 100vh;
+  padding: 60px 0;
+}
+
 button {
   cursor: pointer;
 }
@@ -30,11 +36,15 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100vh - 100px);
   text-align: center;
-  overflow: auto;
-  margin-top: 50px;
+  overflow: hidden;
+  width: 720px;
+  background-color: #fff;
+  margin: auto;
+  height: 100%;
+  border-radius: 20px;
   padding: 20px;
+  justify-content: space-between;
 }
 
 .fixed {
@@ -64,11 +74,21 @@ ul {
 }
 
 .selected {
-  background-color: #6383ec;
+  background-color: #d9af62;
   color: white;
 }
 
 /** component join-list **/
 .errorAuth {
   color: red;
+}
+
+@media screen and (max-width: 920px) {
+  #root {
+    padding: 20px 0;
+  }
+
+  .content-container {
+    width: 80%;
+  }
 }
