@@ -104,7 +104,6 @@ export const ShowProducts = () => {
   }
 
   return (
-    // <main className="list-container">
     <>
       <form className="filter-form">
         <label htmlFor="filter">
@@ -175,6 +174,5 @@ export const ShowProducts = () => {
         <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm} '`}</p>
       )}
     </>
-    // </main>
   );
 };
