@@ -25,27 +25,6 @@ ul {
   list-style: none;
 }
 
-.container {
-  text-align: center;
-  overflow: auto;
-  margin-top: 50px;
-  padding: 20px;
-}
-
-.content-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
-  width: 400px;
-  background-color: #fff;
-  height: 100%;
-  border-radius: 20px;
-  padding: 20px;
-  justify-content: space-between;
-}
-
 .fixed {
   align-items: center;
   border-radius: 10px;
@@ -72,21 +51,8 @@ ul {
   width: 100%;
 }
 
-/** component join-list **/
-.errorAuth {
-  color: red;
-}
-
 @media screen and (max-width: 920px) {
   #root {
     padding: 20px 0;
-  }
-
-  .content-container {
-    width: 80%;
-    background: url('./pages/shopping-add-image.svg') no-repeat;
-    background-size: 60px;
-    background-position: right 15% top 3%;
-    background-color: #fff;
   }
 }
