@@ -1,11 +1,11 @@
 .addform-container {
   margin-top: 30px;
-  height: 300px;
+  height: 100vh;
 }
 
 .input-item {
   border-radius: 25px;
-  border: 2px solid white;
+  border: 2px solid #f2b807;
   line-height: 2.5;
   margin-top: 8px;
   margin-bottom: 20px;
@@ -23,7 +23,7 @@
   margin-bottom: 60px;
   list-style-type: none;
   padding: 15px;
-  height: 200px;
+  height: 50vh;
   border: 2px solid white;
   border-radius: 25px;
   background-color: #f2b807;
