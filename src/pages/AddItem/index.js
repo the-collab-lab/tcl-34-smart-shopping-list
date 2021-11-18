@@ -19,6 +19,9 @@ import { useProducts } from '../../hooks/useProducts';
 
 //Styles
 import './styles.css';
+import '../pages-styles.css';
+
+import Image from '../shopping-add-image.svg';
 
 export const AddItemPage = () => {
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
@@ -79,17 +82,24 @@ export const AddItemPage = () => {
   };
 
   return (
-    <ContentContainer>
-      <form onSubmit={onSubmit} className="add-form">
-        <AddForm handleForm={handleForm} formState={formState} />
-        <Button type="submit" disabled={formState.productName === ''}>
-          Add Item
-        </Button>
-      </form>
+    <div className="page-container">
+      <div className="image-container">
+        <img src={Image} alt="Shopping" width="80%" />
+      </div>
+      <div className="card-container">
+        <ContentContainer>
+          <form onSubmit={onSubmit} className="add-form">
+            <AddForm handleForm={handleForm} formState={formState} />
+            <Button type="submit" disabled={formState.productName === ''}>
+              Add Item
+            </Button>
+          </form>
 
-      {isLoading ? <p>Adding product...</p> : null}
-      {message ? <p>{message}</p> : null}
-      <Navigation />
-    </ContentContainer>
+          {isLoading ? <p>Adding product...</p> : null}
+          {message ? <p>{message}</p> : null}
+          <Navigation />
+        </ContentContainer>
+      </div>
+    </div>
   );
 };

@@ -38,9 +38,8 @@ ul {
   align-items: center;
   text-align: center;
   overflow: hidden;
-  width: 720px;
+  width: 400px;
   background-color: #fff;
-  margin: auto;
   height: 100%;
   border-radius: 20px;
   padding: 20px;
@@ -73,11 +72,6 @@ ul {
   width: 100%;
 }
 
-.selected {
-  background-color: #d9af62;
-  color: white;
-}
-
 /** component join-list **/
 .errorAuth {
   color: red;
@@ -90,5 +84,9 @@ ul {
 
   .content-container {
     width: 80%;
+    background: url('./pages/shopping-add-image.svg') no-repeat;
+    background-size: 60px;
+    background-position: right 15% top 3%;
+    background-color: #fff;
   }
 }

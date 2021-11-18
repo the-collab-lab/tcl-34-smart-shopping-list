@@ -144,4 +144,8 @@
   .filter-form {
     width: 100%;
   }
+
+  .filter-form {
+    margin-top: 7%;
+  }
 }
