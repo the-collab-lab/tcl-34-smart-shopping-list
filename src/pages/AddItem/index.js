@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import Button from '../../components/button';
-import Header from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import AddForm from '../../components/add-form';
 import Navigation from '../../components/routing/Navigation';
@@ -80,20 +79,17 @@ export const AddItemPage = () => {
   };
 
   return (
-    <>
-      <Header className="page-header">Add Item</Header>
-      <ContentContainer>
-        <form onSubmit={onSubmit} className="add-form">
-          <AddForm handleForm={handleForm} formState={formState} />
-          <Button type="submit" disabled={formState.productName === ''}>
-            Add Item
-          </Button>
-        </form>
+    <ContentContainer>
+      <form onSubmit={onSubmit} className="add-form">
+        <AddForm handleForm={handleForm} formState={formState} />
+        <Button type="submit" disabled={formState.productName === ''}>
+          Add Item
+        </Button>
+      </form>
 
-        {isLoading ? <p>Adding product...</p> : null}
-        {message ? <p>{message}</p> : null}
-      </ContentContainer>
+      {isLoading ? <p>Adding product...</p> : null}
+      {message ? <p>{message}</p> : null}
       <Navigation />
-    </>
+    </ContentContainer>
   );
 };
