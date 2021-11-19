@@ -27,6 +27,7 @@ import Button from '../button';
 import { FiTrash2, FiX } from 'react-icons/fi';
 
 import './styles.css';
+import './checkbox-styles.css';
 
 export const ShowProducts = () => {
   const [searchTerm, setSearchTerm] = useState('');
