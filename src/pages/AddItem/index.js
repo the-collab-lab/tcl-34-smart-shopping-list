@@ -82,7 +82,7 @@ export const AddItemPage = () => {
   };
 
   return (
-    <div className="page-container">
+    <main className="page-container">
       <div className="image-container">
         <img src={Image} alt="Shopping" width="80%" />
       </div>
@@ -100,6 +100,6 @@ export const AddItemPage = () => {
           <Navigation />
         </ContentContainer>
       </div>
-    </div>
+    </main>
   );
 };

@@ -11,7 +11,7 @@ import '../pages-styles.css';
 
 export const ListPage = () => {
   return (
-    <div className="page-container">
+    <main className="page-container">
       <div className="image-container">
         <img src={Image} alt="Shopping" width="80%" />
       </div>
@@ -21,6 +21,6 @@ export const ListPage = () => {
           <Navigation />
         </ContentContainer>
       </div>
-    </div>
+    </main>
   );
 };
