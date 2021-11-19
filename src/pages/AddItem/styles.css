@@ -3,14 +3,9 @@ body {
 }
 
 .add-container {
-  background: url('./shopping-add-image.svg') no-repeat;
-  background-size: 60px;
-  background-position: right 10% top;
-  background-color: white;
   border-radius: 25px;
   height: 90vh;
   width: 500px;
-  margin-top: 20px;
 }
 
 .add-form {
@@ -20,10 +15,10 @@ body {
   justify-content: center;
   width: fit-content;
   display: flex;
-  margin: 60px auto 5px;
+  margin: 30px auto 5px;
   height: 60vh;
 }
-  
+
 .button-addform {
   background-color: #f2b807;
   border-radius: 50%;
@@ -36,6 +31,7 @@ body {
   justify-content: center;
   display: flex;
   font-size: 25px;
+  margin-bottom: 40px;
 }
 
 @media screen and (max-width: 920px) {

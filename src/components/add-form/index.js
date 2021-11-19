@@ -4,14 +4,14 @@ import './styles.css';
 
 const AddForm = ({ formState, handleForm }) => (
   <div className="addform-container">
-    <label htmlFor="productName">
+    <label htmlFor="productName" className="addform-container-label">
       Item name:
       <input
         className="input-item"
         id="productName"
         name="productName"
         type="text"
-        placeholder="Item"
+        placeholder="Write here the item to add..."
         value={formState.productName}
         onChange={(event) => handleForm(event)}
         required
@@ -22,20 +22,20 @@ const AddForm = ({ formState, handleForm }) => (
         How soon will you buy this again?
       </legend>
       <RadioInput
-        styles="time-frame-label"
         onChange={(event) => handleForm(event)}
         value="7"
         name="timeFrame"
         label="Soon"
+        className="time-frame-radio"
         required
         checked
       />
       <RadioInput
-        styles="time-frame-label"
         onChange={(event) => handleForm(event)}
         value="14"
         name="timeFrame"
         label="Kind of Soon"
+        className="time-frame-radio"
         required
       />
       <RadioInput
@@ -43,6 +43,7 @@ const AddForm = ({ formState, handleForm }) => (
         value="30"
         name="timeFrame"
         label="Not Soon"
+        className="time-frame-radio"
         required
       />
     </fieldset>
