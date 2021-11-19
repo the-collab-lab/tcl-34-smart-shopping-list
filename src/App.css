@@ -57,6 +57,7 @@ ul {
 
 .welcome-button {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .selected {
@@ -66,5 +67,6 @@ ul {
 
 /** component join-list **/
 .errorAuth {
-  color: red;
+  color: rgb(0, 0, 0);
+  text-shadow: rgb(40 40 40) 0.5px 0 2px;
 }
