@@ -13,7 +13,7 @@ export const Welcome = () => (
     </Header>
     <article className="welcome-content">
       <img
-        className="shoppin-cart-image"
+        className="shopping-cart-image"
         src={shoppingWelcomeImage}
         alt="person shopping with a shopping cart"
       />

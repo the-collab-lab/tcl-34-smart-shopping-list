@@ -1,6 +1,5 @@
 .welcome-container {
   align-items: center;
-  background-color: #f2b807;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -15,14 +14,12 @@
 
 .welcome-form {
   max-width: 700px;
-  padding: 0 30px;
+  padding: 30px;
   text-align: left;
 }
 
-.shoppin-cart-image {
-  height: auto;
-  max-width: 100%;
-  padding: 26px 110px;
+.shopping-cart-image {
+  display: none;
 }
 
 .welcome-text {
@@ -52,10 +49,23 @@
   width: 100%;
 }
 
+@media (min-width: 420px) {
+  .shopping-cart-image {
+    display: flex;
+    height: auto;
+    max-width: 100%;
+    padding: 24px 100px;
+  }
+
+  .welcome-form {
+    padding: 0 30px;
+  }
+}
+
 @media (min-width: 1024px) {
   .welcome-container {
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
   }
   .welcome-header {
     font-size: 38px;
@@ -67,7 +77,7 @@
     flex-direction: row;
   }
 
-  .shoppin-cart-image {
+  .shopping-cart-image {
     height: 400px;
     margin-right: 60px;
     padding: 0;

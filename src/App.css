@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+body {
+  background-color: #f2b807;
+}
+
 button {
   cursor: pointer;
 }
@@ -46,10 +50,10 @@ ul {
 }
 
 .link {
-  background: transparent;
+  background: black;
   border: 1px solid black;
   border-radius: 10px;
-  color: black;
+  color: white;
   font-size: 16px;
   padding: 7px;
   text-decoration: none;
