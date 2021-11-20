@@ -11,6 +11,7 @@ const AddForm = ({ formState, handleForm }) => (
         id="productName"
         name="productName"
         type="text"
+        maxLength="30"
         placeholder="Write here the item to add..."
         value={formState.productName}
         onChange={(event) => handleForm(event)}
