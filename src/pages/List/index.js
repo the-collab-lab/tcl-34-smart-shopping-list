@@ -13,7 +13,7 @@ export const ListPage = () => {
   return (
     <main className="page-container">
       <div className="image-container">
-        <img src={Image} alt="Shopping" width="80%" />
+        <img src={Image} alt="A person is shopping products" />
       </div>
       <div className="card-container">
         <ContentContainer>

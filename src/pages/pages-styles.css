@@ -11,6 +11,10 @@
   justify-content: flex-end;
 }
 
+.image-container img {
+  width: 80%;
+}
+
 .card-container {
   width: 60%;
   display: flex;
