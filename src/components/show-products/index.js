@@ -117,6 +117,7 @@ export const ShowProducts = () => {
             aria-label="Search through list content."
             placeholder="Start typing here..."
             value={searchTerm}
+            maxLength={50}
             onChange={(event) => setSearchTerm(event.target.value)}
           />
         </label>

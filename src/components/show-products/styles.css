@@ -1,5 +1,7 @@
 .empty-shopping-list {
   margin-bottom: 20px;
+  max-width: 100%;
+  word-break: break-word;
 }
 
 .filter-form {
@@ -21,7 +23,7 @@
   line-height: 2;
   margin-top: 8px;
   margin-bottom: 20px;
-  padding: 5px 10px;
+  padding: 5px 42px 5px 10px;
   width: 100%;
   border: #f2b807 solid 2px;
 }
