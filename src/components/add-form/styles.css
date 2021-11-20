@@ -23,13 +23,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 15px;
   list-style-type: none;
   padding: 15px;
   height: 30vh;
   border: 2px solid #f2b807;
   border-radius: 8px;
-  background-color: rgba(242, 184, 7, 0.5);
   font-size: 16px;
   font-weight: 500;
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FiPlus } from 'react-icons/fi';
 import Button from '../../components/button';
 import ContentContainer from '../../components/content-container';
 import AddForm from '../../components/add-form';
@@ -95,7 +94,7 @@ export const AddItemPage = () => {
               className="button-addform"
               disabled={formState.productName === ''}
             >
-              <FiPlus />
+              Add Item
             </Button>
             {isLoading ? <p>Adding product...</p> : null}
             {message ? <p>{message}</p> : null}
