@@ -11,7 +11,7 @@ export const Welcome = () => (
     <Header className="welcome-header">
       Welcome to your Smart Shopping List!
     </Header>
-    <article className="welcome-content">
+    <section className="welcome-content">
       <img
         className="shopping-cart-image"
         src={shoppingWelcomeImage}
@@ -25,6 +25,6 @@ export const Welcome = () => (
         </p>
         <JoinList />
       </div>
-    </article>
+    </section>
   </main>
 );
