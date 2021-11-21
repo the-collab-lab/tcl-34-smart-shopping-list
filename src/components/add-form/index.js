@@ -27,6 +27,7 @@ const AddForm = ({ formState, handleForm }) => (
         value="7"
         name="timeFrame"
         label="Soon"
+        aria-label="timeFrame Soon"
         className="time-frame-radio"
         required
         checked
@@ -35,6 +36,7 @@ const AddForm = ({ formState, handleForm }) => (
         onChange={(event) => handleForm(event)}
         value="14"
         name="timeFrame"
+        aria-label="timeFrame Kind of Soon"
         label="Kind of Soon"
         className="time-frame-radio"
         required
@@ -44,6 +46,7 @@ const AddForm = ({ formState, handleForm }) => (
         value="30"
         name="timeFrame"
         label="Not Soon"
+        aria-label="timeFrame Not Soon"
         className="time-frame-radio"
         required
       />
