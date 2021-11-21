@@ -3,5 +3,27 @@
 }
 
 .navigation {
-  bottom: 0;
+  position: relative;
+  height: 80px;
+}
+
+.navigation-link {
+  background-color: #e1dada;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  border: none;
+  margin: 0 15px;
+  color: #000;
+  text-decoration: none;
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 25px;
+}
+
+.selected {
+  background-color: #f2b807;
+  color: white;
 }

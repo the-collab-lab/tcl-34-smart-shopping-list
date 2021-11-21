@@ -23,7 +23,11 @@ import { findProductById } from '../../utils/findProductById';
 import ContentContainer from '../content-container';
 import Button from '../button';
 
+// Icons
+import { FiTrash2, FiX } from 'react-icons/fi';
+
 import './styles.css';
+import './checkbox-styles.css';
 
 export const ShowProducts = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -101,7 +105,7 @@ export const ShowProducts = () => {
   }
 
   return (
-    <ContentContainer>
+    <>
       <form className="filter-form">
         <label htmlFor="filter">
           Filter items
@@ -113,54 +117,64 @@ export const ShowProducts = () => {
             aria-label="Search through list content."
             placeholder="Start typing here..."
             value={searchTerm}
+            maxLength={50}
             onChange={(event) => setSearchTerm(event.target.value)}
           />
         </label>
         {searchTerm && (
-          <input
+          <button
             className="close-icon"
-            onClick={() => setSearchTerm('')}
-            type="reset"
-            value="X"
             aria-label="This button clears the content of the search field."
-          />
+            onClick={() => setSearchTerm('')}
+          >
+            <FiX />
+          </button>
         )}
       </form>
 
       {list.length > 0 ? (
-        <ul>
-          {list.map(({ id, productName, lastPurchaseDate, timeFrameLabel }) => (
-            <li className="checkbox-item" key={id}>
-              <label htmlFor={id} className="checkbox-label">
-                <input
-                  type="checkbox"
-                  id={id}
-                  name={productName}
-                  onChange={(event) => handleCheckboxChange(event, id)}
-                  checked={
-                    lastPurchaseDate &&
-                    diffBetweenTodayAndDate(lastPurchaseDate.toDate()) < one_day
+        <ul className="products-list">
+          {list.map(({ id, productName, lastPurchaseDate, timeFrameLabel }) => {
+            const checked =
+              lastPurchaseDate &&
+              diffBetweenTodayAndDate(lastPurchaseDate.toDate()) < one_day;
+
+            return (
+              <li
+                className={`checkbox-item checkbox-timeFrame-${timeFrameLabel}`}
+                key={id}
+              >
+                <label
+                  htmlFor={id}
+                  className={
+                    checked ? 'checkbox-label checked-label' : 'checkbox-label'
                   }
-                  aria-label={TimeFrameLabels[timeFrameLabel]}
-                />
-                <span
-                  className={`checkmark checkbox-timeFrame-${timeFrameLabel}`}
-                ></span>
-                <span className="checkbox-name">{productName}</span>
+                >
+                  <input
+                    type="checkbox"
+                    id={id}
+                    name={productName}
+                    onChange={(event) => handleCheckboxChange(event, id)}
+                    checked={checked}
+                    aria-label={TimeFrameLabels[timeFrameLabel]}
+                  />
+                  <span className={`checkmark`}></span>
+                  {productName}
+                </label>
                 <button
                   className="button-delete"
                   aria-label={`This button deletes the product ${productName}.`}
                   onClick={() => handleDeleteProduct(id, productName)}
                 >
-                  Delete
+                  <FiTrash2 />
                 </button>
-              </label>
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
       ) : (
         <p className="empty-shopping-list">{`There aren't products that match with '${searchTerm} '`}</p>
       )}
-    </ContentContainer>
+    </>
   );
 };

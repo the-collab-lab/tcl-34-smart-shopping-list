@@ -6,3 +6,9 @@
   display: flex;
   margin: 0 auto 30px;
 }
+
+@media screen and (max-width: 920px) {
+  .add-form {
+    margin-top: 16px;
+  }
+}
