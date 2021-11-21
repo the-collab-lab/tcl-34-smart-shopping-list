@@ -90,7 +90,11 @@ export const AddItemPage = () => {
         <ContentContainer>
           <form onSubmit={onSubmit} className="add-form">
             <AddForm handleForm={handleForm} formState={formState} />
-            <Button type="submit" disabled={formState.productName === ''}>
+            <Button
+              type="submit"
+              className="button-addform"
+              disabled={formState.productName === ''}
+            >
               Add Item
             </Button>
           </form>

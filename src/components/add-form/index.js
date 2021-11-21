@@ -3,37 +3,42 @@ import RadioInput from '../radio-input';
 import './styles.css';
 
 const AddForm = ({ formState, handleForm }) => (
-  <>
-    <label htmlFor="productName">
+  <div className="addform-container">
+    <label htmlFor="productName" className="addform-container-label">
       Item name:
       <input
         className="input-item"
         id="productName"
         name="productName"
         type="text"
-        placeholder="Item"
+        maxLength="30"
+        placeholder="Write here the item to add..."
         value={formState.productName}
         onChange={(event) => handleForm(event)}
         required
       />
     </label>
     <fieldset className="time-frame" defaultValue="7">
-      <legend>How soon will you buy this again?</legend>
+      <legend className="time-frame-legend">
+        How soon will you buy this again?
+      </legend>
       <RadioInput
-        styles="time-frame-label"
         onChange={(event) => handleForm(event)}
         value="7"
         name="timeFrame"
         label="Soon"
+        aria-label="timeFrame Soon"
+        className="time-frame-radio"
         required
         checked
       />
       <RadioInput
-        styles="time-frame-label"
         onChange={(event) => handleForm(event)}
         value="14"
         name="timeFrame"
+        aria-label="timeFrame Kind of Soon"
         label="Kind of Soon"
+        className="time-frame-radio"
         required
       />
       <RadioInput
@@ -41,10 +46,12 @@ const AddForm = ({ formState, handleForm }) => (
         value="30"
         name="timeFrame"
         label="Not Soon"
+        aria-label="timeFrame Not Soon"
+        className="time-frame-radio"
         required
       />
     </fieldset>
-  </>
+  </div>
 );
 
 export default AddForm;

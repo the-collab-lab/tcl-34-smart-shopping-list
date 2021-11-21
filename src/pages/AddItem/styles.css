@@ -1,12 +1,42 @@
 .add-form {
+  text-align: left;
   align-items: center;
-  display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  display: flex;
+  margin: 30px auto 5px;
+  height: 60vh;
+  gap: 1rem;
+}
+
+.button-addform {
+  background-color: #f2b807;
+  border: none;
+  color: #000;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 40px;
+  border-radius: 8px;
   width: 100%;
+  height: 40px;
+  font-size: 16px;
+  padding: 7px;
+}
+
+.button-addform:disabled {
+  background-color: #e1dada;
 }
 
 @media screen and (max-width: 920px) {
   .add-form {
     margin-top: 16px;
+  }
+
+  .add-container,
+  .add-form {
+    width: 100%;
   }
 }

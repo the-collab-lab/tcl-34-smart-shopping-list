@@ -1,3 +1,19 @@
 .errorAuth {
   color: red;
 }
+
+.input-item {
+  background: #dddada57;
+  border-radius: 4px;
+  border: 1px solid black;
+  line-height: 2;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  outline: none;
+  padding: 0px 10px;
+  width: 100%;
+}
+
+.input-item:focus {
+  outline: rgb(148, 148, 238);
+}
