@@ -18,6 +18,10 @@
   border: #f2b807 solid 2px;
 }
 
+.input-item:focus {
+  outline: #f2b807;
+}
+
 .time-frame {
   align-items: flex-start;
   display: flex;

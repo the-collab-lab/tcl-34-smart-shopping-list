@@ -87,7 +87,7 @@ export const AddItemPage = () => {
       </div>
       <div className="card-container">
         <ContentContainer>
-          <div onSubmit={onSubmit} className="add-form">
+          <form onSubmit={onSubmit} className="add-form">
             <AddForm handleForm={handleForm} formState={formState} />
             <Button
               type="submit"
@@ -96,9 +96,7 @@ export const AddItemPage = () => {
             >
               Add Item
             </Button>
-            {isLoading ? <p>Adding product...</p> : null}
-            {message ? <p>{message}</p> : null}
-          </div>
+          </form>
           {isLoading ? <p>Adding product...</p> : null}
           {message ? <p>{message}</p> : null}
           <Navigation />
