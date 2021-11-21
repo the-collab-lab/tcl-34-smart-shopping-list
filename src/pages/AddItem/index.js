@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import Button from '../../components/button';
-import Header from '../../components/title';
 import ContentContainer from '../../components/content-container';
 import AddForm from '../../components/add-form';
 import Navigation from '../../components/routing/Navigation';
@@ -20,6 +19,9 @@ import { useProducts } from '../../hooks/useProducts';
 
 //Styles
 import './styles.css';
+import '../pages-styles.css';
+
+import Image from '../shopping-add-image.svg';
 
 export const AddItemPage = () => {
   const { storedValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
@@ -80,20 +82,24 @@ export const AddItemPage = () => {
   };
 
   return (
-    <>
-      <Header className="page-header">Add Item</Header>
-      <ContentContainer>
-        <form onSubmit={onSubmit} className="add-form">
-          <AddForm handleForm={handleForm} formState={formState} />
-          <Button type="submit" disabled={formState.productName === ''}>
-            Add Item
-          </Button>
-        </form>
+    <main className="page-container">
+      <div className="image-container">
+        <img src={Image} alt="A person is shopping products" />
+      </div>
+      <div className="card-container">
+        <ContentContainer>
+          <form onSubmit={onSubmit} className="add-form">
+            <AddForm handleForm={handleForm} formState={formState} />
+            <Button type="submit" disabled={formState.productName === ''}>
+              Add Item
+            </Button>
+          </form>
 
-        {isLoading ? <p>Adding product...</p> : null}
-        {message ? <p>{message}</p> : null}
-      </ContentContainer>
-      <Navigation />
-    </>
+          {isLoading ? <p>Adding product...</p> : null}
+          {message ? <p>{message}</p> : null}
+          <Navigation />
+        </ContentContainer>
+      </div>
+    </main>
   );
 };

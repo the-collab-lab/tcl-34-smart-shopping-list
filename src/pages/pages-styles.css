@@ -1,0 +1,33 @@
+.page-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.image-container img {
+  width: 80%;
+}
+
+.card-container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+@media screen and (max-width: 920px) {
+  .image-container {
+    display: none;
+  }
+
+  .card-container {
+    width: 100%;
+  }
+}

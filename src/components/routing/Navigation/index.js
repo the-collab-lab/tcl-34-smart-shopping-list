@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
+import { FiShoppingCart, FiPlus } from 'react-icons/fi';
 
 import './styles.css';
 
@@ -10,7 +11,7 @@ function CustomLink({ children, to, disable }) {
   });
   return (
     <Link
-      className={`link ${match ? 'selected' : ''} ${
+      className={`navigation-link ${match ? 'selected' : ''} ${
         disable ? 'disable-link' : ''
       }`}
       to={to}
@@ -23,8 +24,15 @@ function CustomLink({ children, to, disable }) {
 function Navigation() {
   return (
     <nav className="fixed navigation">
-      <CustomLink to="/list"> List </CustomLink>
-      <CustomLink to="/addItem"> Add Item </CustomLink>
+      <CustomLink to="/list" aria-label="This button open your shopping list.">
+        <FiShoppingCart />
+      </CustomLink>
+      <CustomLink
+        to="/addItem"
+        aria-label="This button open the add product form."
+      >
+        <FiPlus />
+      </CustomLink>
     </nav>
   );
 }

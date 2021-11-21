@@ -7,6 +7,8 @@ import {
 import { isTokenValid } from '../../utils/firebaseUtils';
 import Button from '../button';
 
+import './styles.css';
+
 export const JoinList = () => {
   const [listToken, setListToken] = useState('');
   const [checkingToken, setCheckingToken] = useState(false);

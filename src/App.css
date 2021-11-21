@@ -7,6 +7,12 @@
 
 body {
   background-color: #f2b807;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#root {
+  height: 100vh;
+  padding: 60px 0;
 }
 
 button {
@@ -19,24 +25,6 @@ button:disabled {
 
 ul {
   list-style: none;
-}
-
-.container {
-  margin-top: 50px;
-  overflow: auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.content-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin-top: 50px;
-  overflow: auto;
-  text-align: center;
-  width: 100%;
 }
 
 .fixed {
@@ -73,4 +61,10 @@ ul {
 .errorAuth {
   color: rgb(0, 0, 0);
   text-shadow: rgb(40 40 40) 0.5px 0 2px;
+}
+
+@media screen and (max-width: 920px) {
+  #root {
+    padding: 20px 0;
+  }
 }
