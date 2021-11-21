@@ -7,7 +7,7 @@ const AddForm = ({ formState, handleForm }) => (
     <label htmlFor="productName" className="addform-container-label">
       Item name:
       <input
-        className="input-item"
+        className="input-itemform"
         id="productName"
         name="productName"
         type="text"
