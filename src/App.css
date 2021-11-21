@@ -1,12 +1,16 @@
 * {
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: #f2b807;
   font-family: 'Montserrat', sans-serif;
 }
 
 #root {
-  background-color: #f2b807;
   height: 100vh;
   padding: 60px 0;
 }
@@ -34,19 +38,29 @@ ul {
 }
 
 .link {
-  background-color: #e1dada;
-  border-radius: 5px;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  padding: 5px;
-  min-width: 84px;
-  border: none;
+  background: black;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
   font-size: 16px;
+  padding: 7px;
+  text-decoration: none;
 }
 
 .welcome-button {
   width: 100%;
+  margin-bottom: 10px;
+}
+
+.selected {
+  background-color: #6383ec;
+  color: white;
+}
+
+/** component join-list **/
+.errorAuth {
+  color: rgb(0, 0, 0);
+  text-shadow: rgb(40 40 40) 0.5px 0 2px;
 }
 
 @media screen and (max-width: 920px) {
