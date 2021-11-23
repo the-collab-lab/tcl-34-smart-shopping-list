@@ -1,6 +1,12 @@
 import React from 'react';
 import './styles.css';
 
+const TimeFrames = {
+  soon: '7',
+  kindOfSoon: '14',
+  notSoon: '30',
+};
+
 const AddForm = ({ formState, handleForm }) => (
   <div className="addform-container">
     <label htmlFor="productName" className="addform-container-label">
@@ -32,9 +38,9 @@ const AddForm = ({ formState, handleForm }) => (
           type="radio"
           id="soon"
           name="timeFrame"
-          value="7"
+          value={TimeFrames.soon}
           onChange={(event) => handleForm(event)}
-          checked={formState.timeFrame === '7'}
+          checked={formState.timeFrame === TimeFrames.soon}
         />
         Soon
       </label>
@@ -50,9 +56,9 @@ const AddForm = ({ formState, handleForm }) => (
           type="radio"
           id="kind-of-soon"
           name="timeFrame"
-          value="14"
+          value={TimeFrames.kindOfSoon}
           onChange={(event) => handleForm(event)}
-          checked={formState.timeFrame === '14'}
+          checked={formState.timeFrame === TimeFrames.kindOfSoon}
         />
         Kind of soon
       </label>
@@ -68,9 +74,9 @@ const AddForm = ({ formState, handleForm }) => (
           type="radio"
           id="not-soon"
           name="timeFrame"
-          value="30"
+          value={TimeFrames.notSoon}
           onChange={(event) => handleForm(event)}
-          checked={formState.timeFrame === '30'}
+          checked={formState.timeFrame === TimeFrames.notSoon}
         />
         Not soon
       </label>
