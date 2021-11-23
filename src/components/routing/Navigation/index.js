@@ -4,7 +4,7 @@ import { FiShoppingCart, FiPlus } from 'react-icons/fi';
 
 import './styles.css';
 
-function CustomLink({ children, to, ariaLabel, ...rest }) {
+function CustomLink({ children, to, ariaLabel }) {
   const match = useRouteMatch({
     path: to,
     exact: true,

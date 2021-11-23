@@ -17,7 +17,7 @@ const AddForm = ({ formState, handleForm }) => (
         required
       />
     </label>
-    <fieldset className="time-frame" defaultChecked="7">
+    <fieldset className="time-frame">
       <legend className="time-frame-legend">
         How soon will you buy this again?
       </legend>
