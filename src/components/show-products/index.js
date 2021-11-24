@@ -155,7 +155,7 @@ export const ShowProducts = () => {
                     id={id}
                     name={productName}
                     onChange={(event) => handleCheckboxChange(event, id)}
-                    checked={checked}
+                    checked={!!checked}
                     disabled={checked}
                     aria-label={TimeFrameLabels[timeFrameLabel]}
                   />
