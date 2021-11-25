@@ -1,6 +1,7 @@
 import React from 'react';
 import RadioInput from '../radio-input';
 import './styles.css';
+import { FiX } from 'react-icons/fi';
 
 const AddForm = ({ formState, handleForm }) => (
   <div className="addform-container">
@@ -18,6 +19,15 @@ const AddForm = ({ formState, handleForm }) => (
         required
       />
     </label>
+    {formState.productName && (
+      <button
+        className="close-icon"
+        aria-label="This button clears the content of the input."
+        onClick={() => handleForm('')}
+      >
+        <FiX />
+      </button>
+    )}
     <fieldset className="time-frame" defaultValue="7">
       <legend className="time-frame-legend">
         How soon will you buy this again?

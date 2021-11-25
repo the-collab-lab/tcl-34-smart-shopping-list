@@ -8,6 +8,15 @@
   font-weight: 700;
 }
 
+.close-icon {
+  font-size: 20px;
+  bottom: 25px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 15px;
+}
+
 .input-itemform {
   border-radius: 8px;
   line-height: 2;
