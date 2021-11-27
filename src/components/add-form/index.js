@@ -3,7 +3,7 @@ import RadioInput from '../radio-input';
 import './styles.css';
 import { FiX } from 'react-icons/fi';
 
-const AddForm = ({ formState, handleForm }) => (
+const AddForm = ({ formState, handleForm, handleInput }) => (
   <div className="addform-container">
     <div className="addform-inputgroup">
       <label htmlFor="productName" className="addform-container-label">
@@ -24,7 +24,7 @@ const AddForm = ({ formState, handleForm }) => (
         <button
           className="close-icon"
           aria-label="This button clears the content of the input."
-          onClick={() => handleForm('')}
+          onClick={() => handleInput()}
         >
           <FiX />
         </button>
