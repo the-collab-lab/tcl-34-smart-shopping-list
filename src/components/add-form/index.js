@@ -44,7 +44,6 @@ const AddForm = ({ formState, handleForm }) => (
         />
         Soon
       </label>
-      <br />
 
       <label
         htmlFor="kind-of-soon"
@@ -62,7 +61,6 @@ const AddForm = ({ formState, handleForm }) => (
         />
         Kind of soon
       </label>
-      <br />
 
       <label
         htmlFor="not-soon"
