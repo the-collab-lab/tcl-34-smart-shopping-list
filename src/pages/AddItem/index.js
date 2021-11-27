@@ -81,6 +81,14 @@ export const AddItemPage = () => {
     }));
   };
 
+  const handleInput = () => {
+    /*Resets product name to an empty string
+    when user clicks X on input*/
+    setFormState((formState) => ({
+      ...formState,
+      productName: '',
+    }));
+  };
   return (
     <main className="page-container">
       <div className="image-container">
@@ -89,7 +97,11 @@ export const AddItemPage = () => {
       <div className="card-container">
         <ContentContainer>
           <form onSubmit={onSubmit} className="add-form">
-            <AddForm handleForm={handleForm} formState={formState} />
+            <AddForm
+              handleForm={handleForm}
+              handleInput={handleInput}
+              formState={formState}
+            />
             <Button
               type="submit"
               className="button-addform"
