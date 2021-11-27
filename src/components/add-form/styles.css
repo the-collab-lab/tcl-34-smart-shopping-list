@@ -8,6 +8,10 @@
   font-weight: 700;
 }
 
+.addform-inputgroup {
+  position: relative;
+}
+
 .close-icon {
   font-size: 20px;
   bottom: 25px;

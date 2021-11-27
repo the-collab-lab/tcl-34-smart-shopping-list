@@ -5,29 +5,31 @@ import { FiX } from 'react-icons/fi';
 
 const AddForm = ({ formState, handleForm }) => (
   <div className="addform-container">
-    <label htmlFor="productName" className="addform-container-label">
-      Item name:
-      <input
-        className="input-itemform"
-        id="productName"
-        name="productName"
-        type="text"
-        maxLength="30"
-        placeholder="Write here the item to add..."
-        value={formState.productName}
-        onChange={(event) => handleForm(event)}
-        required
-      />
-    </label>
-    {formState.productName && (
-      <button
-        className="close-icon"
-        aria-label="This button clears the content of the input."
-        onClick={() => handleForm('')}
-      >
-        <FiX />
-      </button>
-    )}
+    <div className="addform-inputgroup">
+      <label htmlFor="productName" className="addform-container-label">
+        Item name:
+        <input
+          className="input-itemform"
+          id="productName"
+          name="productName"
+          type="text"
+          maxLength="30"
+          placeholder="Write here the item to add..."
+          value={formState.productName}
+          onChange={(event) => handleForm(event)}
+          required
+        />
+      </label>
+      {formState.productName && (
+        <button
+          className="close-icon"
+          aria-label="This button clears the content of the input."
+          onClick={() => handleForm('')}
+        >
+          <FiX />
+        </button>
+      )}
+    </div>
     <fieldset className="time-frame" defaultValue="7">
       <legend className="time-frame-legend">
         How soon will you buy this again?
