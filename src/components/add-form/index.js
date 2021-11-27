@@ -1,6 +1,11 @@
 import React from 'react';
-import RadioInput from '../radio-input';
 import './styles.css';
+
+const TimeFrames = {
+  soon: '7',
+  kindOfSoon: '14',
+  notSoon: '30',
+};
 
 const AddForm = ({ formState, handleForm }) => (
   <div className="addform-container">
@@ -18,38 +23,61 @@ const AddForm = ({ formState, handleForm }) => (
         required
       />
     </label>
-    <fieldset className="time-frame" defaultValue="7">
+    <fieldset className="time-frame">
       <legend className="time-frame-legend">
         How soon will you buy this again?
       </legend>
-      <RadioInput
-        onChange={(event) => handleForm(event)}
-        value="7"
-        name="timeFrame"
-        label="Soon"
-        aria-label="timeFrame Soon"
+
+      <label
+        htmlFor="soon"
+        aria-label="You need to buy this product soon"
         className="time-frame-radio"
-        required
-        checked
-      />
-      <RadioInput
-        onChange={(event) => handleForm(event)}
-        value="14"
-        name="timeFrame"
-        aria-label="timeFrame Kind of Soon"
-        label="Kind of Soon"
+      >
+        <input
+          required
+          type="radio"
+          id="soon"
+          name="timeFrame"
+          value={TimeFrames.soon}
+          onChange={(event) => handleForm(event)}
+          checked={formState.timeFrame === TimeFrames.soon}
+        />
+        Soon
+      </label>
+
+      <label
+        htmlFor="kind-of-soon"
+        aria-label="You need to buy this product kind of soon"
         className="time-frame-radio"
-        required
-      />
-      <RadioInput
-        onChange={(event) => handleForm(event)}
-        value="30"
-        name="timeFrame"
-        label="Not Soon"
-        aria-label="timeFrame Not Soon"
+      >
+        <input
+          required
+          type="radio"
+          id="kind-of-soon"
+          name="timeFrame"
+          value={TimeFrames.kindOfSoon}
+          onChange={(event) => handleForm(event)}
+          checked={formState.timeFrame === TimeFrames.kindOfSoon}
+        />
+        Kind of soon
+      </label>
+
+      <label
+        htmlFor="not-soon"
+        aria-label="You need to buy this product not soon"
         className="time-frame-radio"
-        required
-      />
+      >
+        <input
+          required
+          type="radio"
+          id="not-soon"
+          name="timeFrame"
+          value={TimeFrames.notSoon}
+          onChange={(event) => handleForm(event)}
+          checked={formState.timeFrame === TimeFrames.notSoon}
+        />
+        Not soon
+      </label>
     </fieldset>
   </div>
 );
