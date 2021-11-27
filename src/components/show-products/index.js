@@ -99,7 +99,12 @@ export const ShowProducts = () => {
         <p className="empty-shopping-list">
           Your shopping list is currently empty.
         </p>
-        <Button onClick={() => push('/addItem')}>Add Item</Button>
+        <Button
+          className="button-additem-list"
+          onClick={() => push('/addItem')}
+        >
+          Add Item
+        </Button>
       </ContentContainer>
     );
   }

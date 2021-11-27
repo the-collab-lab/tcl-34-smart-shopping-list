@@ -81,6 +81,11 @@ export const AddItemPage = () => {
     }));
   };
 
+  const setDefaultValues = () => {
+    /*Resets form to an empty string
+    when user clicks X on input*/
+    setFormState(defaultValues);
+  };
   return (
     <main className="page-container">
       <div className="image-container">
@@ -89,7 +94,11 @@ export const AddItemPage = () => {
       <div className="card-container">
         <ContentContainer>
           <form onSubmit={onSubmit} className="add-form">
-            <AddForm handleForm={handleForm} formState={formState} />
+            <AddForm
+              handleForm={handleForm}
+              setDefaultValues={setDefaultValues}
+              formState={formState}
+            />
             <Button
               type="submit"
               className="button-addform"
