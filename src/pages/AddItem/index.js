@@ -84,7 +84,10 @@ export const AddItemPage = () => {
   const setDefaultValues = () => {
     /*Resets form to an empty string
     when user clicks X on input*/
-    setFormState(defaultValues);
+    setFormState((formState) => ({
+      ...formState,
+      productName: '',
+    }));
   };
   return (
     <main className="page-container">
