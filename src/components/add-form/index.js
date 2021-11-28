@@ -6,7 +6,11 @@ import { TimeFrames } from '../../utils/timeFrames';
 const AddForm = ({ formState, handleForm, setDefaultValues }) => (
   <div className="addform-container">
     <div className="addform-inputgroup">
-      <label htmlFor="productName" className="addform-container-label">
+      <label
+        aria-label="Insert here the item you'd like to add"
+        htmlFor="productName"
+        className="addform-container-label"
+      >
         Item name:
         <input
           className="input-itemform"
