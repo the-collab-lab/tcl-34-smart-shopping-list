@@ -8,3 +8,9 @@ export const TimeFrameLabels = {
   kindOfSoon: 'You are expected to buy this item kind of soon',
   notAnySoon: 'You are not expected to buy this item any time soon',
 };
+
+export const TimeFrames = {
+  soon: '7',
+  kindOfSoon: '14',
+  notAnySoon: '30',
+};
