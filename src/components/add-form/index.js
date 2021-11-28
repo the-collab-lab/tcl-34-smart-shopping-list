@@ -69,7 +69,7 @@ const AddForm = ({ formState, handleForm }) => (
           name="timeFrame"
           value={TimeFrames.notSoon}
           onChange={(event) => handleForm(event)}
-          checked={formState.timeFrame === TimeFrames.notSoon}
+          checked={formState.timeFrame === TimeFrames.notAnySoon}
         />
         Not soon
       </label>
