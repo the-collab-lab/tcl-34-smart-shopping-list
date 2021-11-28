@@ -83,9 +83,9 @@ const AddForm = ({ formState, handleForm, setDefaultValues }) => (
           type="radio"
           id="not-soon"
           name="timeFrame"
-          value={TimeFrames.notSoon}
+          value={TimeFrames.notAnySoon}
           onChange={(event) => handleForm(event)}
-          checked={formState.timeFrame === TimeFrames.notSoon}
+          checked={formState.timeFrame === TimeFrames.notAnySoon}
         />
         Not soon
       </label>

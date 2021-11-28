@@ -1,4 +1,6 @@
 import { diffBetweenTodayAndDate } from './diffBetweenTodayAndDate';
+import { TimeFrames } from './timeFrames';
+import { getKeyByValue } from './getKeyByValue';
 /***
  * First we verify by specificity and
  * we return the string that is used for the
@@ -9,6 +11,7 @@ export const nextPurchaseDay = (
   daysUntilNextPurchase,
   lastPurchaseDate,
   numberOfPurchases,
+  timeFrame,
 ) => {
   /**
    * After some checks, we noticed lastPurchasedDate is a Date object
@@ -27,6 +30,13 @@ export const nextPurchaseDay = (
   const daysSinceLastPurchase = diffBetweenTodayAndDate(lastPurchase);
   const nextEstimatedPurchase = 2 * daysUntilNextPurchase;
 
+  if (numberOfPurchases === 0) {
+    /*
+    This either returns a string with soon, kindOfSoon or notAnySoon
+    that'll depend on the timeframe that comes from Firestore
+    */
+    return getKeyByValue(TimeFrames, timeFrame);
+  }
   if (
     numberOfPurchases === 1 ||
     daysSinceLastPurchase >= nextEstimatedPurchase

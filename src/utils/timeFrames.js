@@ -12,5 +12,5 @@ export const TimeFrameLabels = {
 export const TimeFrames = {
   soon: '7',
   kindOfSoon: '14',
-  notSoon: '30',
+  notAnySoon: '30',
 };
