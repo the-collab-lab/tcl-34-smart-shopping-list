@@ -7,7 +7,6 @@ export const getKeyByValue = (object, value) => {
    **/
 
   for (var prop in object) {
-    debugger;
     if (object.hasOwnProperty(prop) && object[prop] === value) {
       return prop;
     }
