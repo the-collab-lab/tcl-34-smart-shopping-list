@@ -1,28 +1,39 @@
 import React from 'react';
 import './styles.css';
+import { FiX } from 'react-icons/fi';
+import { TimeFrames } from '../../utils/timeFrames';
 
-const TimeFrames = {
-  soon: '7',
-  kindOfSoon: '14',
-  notSoon: '30',
-};
-
-const AddForm = ({ formState, handleForm }) => (
+const AddForm = ({ formState, handleForm, setDefaultValues }) => (
   <div className="addform-container">
-    <label htmlFor="productName" className="addform-container-label">
-      Item name:
-      <input
-        className="input-itemform"
-        id="productName"
-        name="productName"
-        type="text"
-        maxLength="30"
-        placeholder="Write here the item to add..."
-        value={formState.productName}
-        onChange={(event) => handleForm(event)}
-        required
-      />
-    </label>
+    <div className="addform-inputgroup">
+      <label
+        aria-label="Insert here the item you'd like to add"
+        htmlFor="productName"
+        className="addform-container-label"
+      >
+        Item name:
+        <input
+          className="input-itemform"
+          id="productName"
+          name="productName"
+          type="text"
+          maxLength="30"
+          placeholder="Write here the item to add..."
+          value={formState.productName}
+          onChange={(event) => handleForm(event)}
+          required
+        />
+      </label>
+      {formState.productName && (
+        <button
+          className="close-icon"
+          aria-label="This button clears the content of the input."
+          onClick={() => setDefaultValues()}
+        >
+          <FiX />
+        </button>
+      )}
+    </div>
     <fieldset className="time-frame">
       <legend className="time-frame-legend">
         How soon will you buy this again?

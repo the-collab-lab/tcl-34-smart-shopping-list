@@ -8,10 +8,14 @@
   font-weight: 700;
 }
 
+.addform-inputgroup {
+  position: relative;
+}
+
 .input-itemform {
   border-radius: 8px;
   line-height: 2;
-  margin-top: 8px;
+  margin-top: 22px;
   margin-bottom: 20px;
   padding: 5px 10px;
   width: 100%;
