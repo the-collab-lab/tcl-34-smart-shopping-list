@@ -82,7 +82,7 @@ export const AddItemPage = () => {
   };
 
   const setDefaultValues = () => {
-    /*Resets form to an empty string
+    /*Resets form productName to an empty string
     when user clicks X on input*/
     setFormState((formState) => ({
       ...formState,
