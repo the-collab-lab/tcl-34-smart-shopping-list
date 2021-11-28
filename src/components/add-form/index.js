@@ -1,11 +1,6 @@
 import React from 'react';
 import './styles.css';
-
-const TimeFrames = {
-  soon: '7',
-  kindOfSoon: '14',
-  notSoon: '30',
-};
+import { TimeFrames } from '../../utils/timeFrames';
 
 const AddForm = ({ formState, handleForm }) => (
   <div className="addform-container">
