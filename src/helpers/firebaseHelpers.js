@@ -18,6 +18,7 @@ export const parseData = (querySnapshot) =>
           product.daysUntilNextPurchase,
           product.lastPurchaseDate,
           product.numberOfPurchases,
+          product.timeFrame,
         ),
       },
     ];
