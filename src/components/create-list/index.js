@@ -1,4 +1,4 @@
-import { getToken } from '@the-collab-lab/shopping-list-utils';
+import { generateToken } from '@the-collab-lab/shopping-list-utils';
 import { useHistory } from 'react-router-dom';
 import {
   useLocalStorage,
@@ -11,7 +11,7 @@ export const CreateList = () => {
   const { setValue } = useLocalStorage(LOCAL_STORAGE_LIST_TOKEN);
 
   const generateToken = () => {
-    const token = getToken();
+    const token = generateToken();
     setValue(token);
     push('/list');
   };
